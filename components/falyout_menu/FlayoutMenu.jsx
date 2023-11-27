@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
+import { useRouter } from "next/router"
 import { useCategoriesContext } from "@/context/CategoriesContext"
 import { LeftArrowSvg, RightArrowSvg } from "../svgs/Svgs"
-import Link from "next/link"
+import { toUrl } from "@/utils/toUrl"
 import {
     Container,
     Button,
@@ -11,13 +12,15 @@ import {
     SubMenuHeader,
     SubMenuItem,
     Return,
+    SeeAll,
 } from "./Elements"
 
 const FlayoutMenu = ({ children }) => {
 
+    const router = useRouter()
     const { categories } = useCategoriesContext()
     const [open, setOpen] = useState(false)
-    const [subMenu, setSubMenu] = useState({ id: "", items: [] })
+    const [subMenu, setSubMenu] = useState({ name: "", id: "", items: [] })
 
     useEffect(() => {
 
@@ -37,7 +40,10 @@ const FlayoutMenu = ({ children }) => {
 
     }, [open])
 
-    console.log(categories)
+    const handleRouter = (name, id) => {
+        const friendlyUrl = toUrl(name)
+        router.push(`/productos/${id}`, `/productos/id=${id}&${friendlyUrl}`)
+    }
 
     const Categories = () => {
         return (
@@ -47,7 +53,7 @@ const FlayoutMenu = ({ children }) => {
                         return (
                             <MenuItem
                                 key={category.parent.idrubro}
-                                onClick={(() => setSubMenu({ id: category.parent.idrubro, items: category.children }))}
+                                onClick={(() => setSubMenu({ name: category.parent.nombre, id: category.parent.idrubro, items: category.children }))}
                                 id="flyout-btn"
                             >
                                 {category.parent.nombre}
@@ -64,17 +70,21 @@ const FlayoutMenu = ({ children }) => {
         return (
             <>
                 <SubMenuHeader>
-                    <Return id="flyout-btn" onClick={() => setSubMenu({ id: "", items: [] })}>
+                    <Return id="flyout-btn" onClick={() => setSubMenu({ name: "", id: "", items: [] })}>
                         <LeftArrowSvg />
                     </Return>
-                    <Link href={`/productos/${subMenu.id}`}>Ver todo</Link>
+                    <SeeAll onClick={() => handleRouter(subMenu.name, subMenu.id)}>Ver todo</SeeAll>
                 </SubMenuHeader>
                 {
                     subMenu?.items.map(category => {
                         return (
-                            <SubMenuItem key={category.idrubro} id="flyout-btn" href={`/productos/${category.idrubro}`}>
-                                    {category.nombre}
-                                    <Icon><RightArrowSvg /></Icon>
+                            <SubMenuItem
+                                onClick={() => handleRouter(category.nombre, category.idrubro)}
+                                key={category.idrubro}
+                                id="flyout-btn"
+                            >
+                                {category.nombre}
+                                <Icon><RightArrowSvg /></Icon>
                             </SubMenuItem>
                         )
                     })

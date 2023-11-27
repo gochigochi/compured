@@ -59,7 +59,7 @@ export const SubMenuHeader = styled.div`
     padding: 0 25px 25px 20px;
 `
 
-export const SubMenuItem = styled(Link)`
+export const SubMenuItem = styled.button`
     padding: 25px;
     cursor: pointer;
     border-radius: 8px;
@@ -75,6 +75,10 @@ export const SubMenuItem = styled(Link)`
             opacity: 1;
         }
     }
+`
+
+export const SeeAll = styled.button`
+    cursor: pointer;
 `
 
 export const Return = styled.button`
