@@ -1,8 +1,7 @@
 import styled from "styled-components"
-import Link from "next/link"
 import Image from "next/image"
 
-export const Container = styled(Link)`
+export const Container = styled.button`
     width: 100%;
     border-radius: 8px;
     height: 330px;

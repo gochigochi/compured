@@ -1,6 +1,6 @@
 import { useSwiper } from 'swiper/react'
-// import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import { LeftNavButton, RightNavButton } from "./Elements"
+import { LeftArrowSvg, RightArrowSvg } from '@/components/svgs/Svgs'
 
 const NavButtons = () => {
 
@@ -9,10 +9,10 @@ const NavButtons = () => {
     return (
         <>
             <LeftNavButton onClick={() => swiper.slidePrev()}>
-                {/* <IoIosArrowBack /> */}
+                <LeftArrowSvg />
             </LeftNavButton>
             <RightNavButton onClick={() => swiper.slideNext()}>
-                {/* <IoIosArrowForward /> */}
+                <RightArrowSvg />
             </RightNavButton>
         </>
     )
