@@ -11,6 +11,7 @@ export const CartContainer = styled.div`
 
 export const ItemList = styled.div`
     grid-column: span 7 / span 7;
+    padding: 30px 0;
 `
 
 export const SummaryContainer = styled.div`

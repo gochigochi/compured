@@ -6,6 +6,7 @@ export const Container = styled.div`
     width: 100vw;
     display: flex;
     justify-content: center;
+    z-index: 850;
 `
 
 export const Box = styled.div`

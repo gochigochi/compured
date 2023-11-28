@@ -5,9 +5,13 @@ const Button = styled.button`
     border-radius: 25px;
     padding: var(--button-padding);
     color: #fff;
-    cursor: pointer;
+    cursor: ${({dis}) => dis ? "default" : "pointer"} ;
 `
 
-const PrimaryButton = ({ children, onClick = () => {} }) => <Button onClick={onClick}>{children}</Button>
+const PrimaryButton = ({ children, onClick = () => {}, disabled = false }) => {
+    return(
+        <Button onClick={onClick} disabled={disabled} dis={disabled}>{children}</Button>
+    )
+}
 
 export default PrimaryButton

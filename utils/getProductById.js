@@ -1,40 +1,38 @@
 
 export async function getProductById(id) {
-  const stores = [1, 2];
-  let product = null;
+  const stores = [1, 2]
+  let product = null
 
   try {
     const productPromises = stores.map(async (store) => {
-      const uniqueProduct = await getProduct(id, store);
-      return uniqueProduct;
-    });
+      const uniqueProduct = await getProduct(id, store)
+      return uniqueProduct
+    })
 
-    const products = await Promise.all(productPromises);
+    const products = await Promise.all(productPromises)
 
     const totalStock = products.reduce((acc, current) => {
       if (current.stockactual) {
-        return acc + Number(current.stockactual);
+        return acc + Number(current.stockactual)
       } else {
-        return acc + 0;
+        return acc + 0
       }
-    }, 0);
+    }, 0)
 
     const productsStock = products.map((product, index) => {
       return {
         stock: product.stockactual ? Number(product.stockactual) : 0,
         sucursal: stores[index],
-      };
-    });
+      }
+    })
 
-    console.log(productsStock);
-
-    product = { ...products[0], stockactual: totalStock, productsStock };
-    return product;
+    product = { ...products[0], stockactual: totalStock, productsStock }
+    return product
   } catch (error) {
-    console.error("Error:", error.message);
+    console.error("Error:", error.message)
   }
 
-  return product;
+  return product
 }
 
 async function getProduct(id, store) {
@@ -44,13 +42,13 @@ async function getProduct(id, store) {
     );
 
     if (!response.ok) {
-      throw new Error(`Error en la solicitud: ${response.statusText}`);
+      throw new Error(`Error en la solicitud: ${response.statusText}`)
     }
 
-    const product = await response.json();
-    return product.resultados;
+    const product = await response.json()
+    return product.resultados
   } catch (error) {
-    console.error("Error:", error.message);
-    throw error;
+    console.error("Error:", error.message)
+    throw error
   }
 }

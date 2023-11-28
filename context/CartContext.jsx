@@ -1,4 +1,5 @@
-import { createContext, useContext, useState } from "react"
+import { updateLocalStorage } from "@/utils/updateLocalStorage"
+import { createContext, useContext, useState, useEffect } from "react"
 
 const CartCtx = createContext()
 export const useCartContext = () => useContext(CartCtx)
@@ -7,51 +8,76 @@ const CartContextProvider = ({ children }) => {
 
   const [cart, setCart] = useState([])
 
+  // GET LOCAL STORAGE CART DATA IF ANY
+  useEffect(() => {
+
+    if (typeof window !== 'undefined' && localStorage.getItem("cart")) {
+      
+      const localCart = JSON.parse(localStorage.getItem("cart"))
+
+      setCart(localCart)
+
+    }
+  }, [])
+
+
+  // ADD ITEM TO CART
   const addItem = (item, qty) => {
 
-    console.log(item)
-
     const index = cart.findIndex(i => i.id === item.idproducto)
-    const newCart = [...cart]
-
+    
     //IF NEW ITEM
     if (index === -1) {
-
+      
       const cartItem = {
         id: item.idproducto,
+        name: item.nombre,
         image: item.archivos[0].imagen,
         price: item.preciofinal,
         stock: item.stockactual,
         qty: qty,
       }
-  
-      setCart([...cart, cartItem])
-      return {success: true, msg: `Agregaste ${qty} producto/s al carrito`}
+      
+      const updatedCart = [...cart, cartItem]
+
+      setCart(updatedCart)
+
+      updateLocalStorage(updatedCart)
+
+      return { success: true, msg: `Agregaste ${qty} producto/s al carrito` }
     }
 
-    if (newCart[index].qty === item.stockactual) {
+    const newCart = [...cart]
 
+    // IF QTY SELECTED IS MORE THAN STOCK
+    if (newCart[index].qty === item.stockactual) {
+      
       return { success: false, msg: "No hay más stock" }
     }
-
+    
+    // IF ITEM EXISTS UPDATE QTY
     newCart[index].qty += qty
 
     setCart(newCart)
-    return {success: true, msg: `Agregaste ${qty} producto/s al carrito`}
+
+    updateLocalStorage(newCart)
+
+    return { success: true, msg: `Agregaste ${qty} producto/s al carrito` }
   }
 
-  // console.log(cart)
 
-  const removeItem = (item) => {
-
+  // REMOVE ITEM FROM CART
+  const removeItem = (id) => {
+    console.log("remove....", id)
   }
 
+  // CLEAN CART
   const resetCart = (item) => {
 
   }
 
   return (
-    <CartCtx.Provider value={{ cart, addItem }}>
+    <CartCtx.Provider value={{ cart, addItem, removeItem }}>
       {children}
     </CartCtx.Provider>
   )

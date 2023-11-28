@@ -62,7 +62,7 @@ const PaymentMethods = () => {
                                                     <LogoContainer>
                                                         <Logo
                                                             src={logo}
-                                                            alt=""
+                                                            alt=" "
                                                             fill
                                                         />
                                                     </LogoContainer>

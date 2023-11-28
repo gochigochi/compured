@@ -37,6 +37,9 @@ const ProductDetail = ({ product, categs, featured }) => {
 
         const res = addItem(product, qty)
 
+        // TEST IN PRODUCTION
+        console.log("RESPONSE......", res)
+
         setShowToast(true)
         setActionResponse({ success: res.success, msg: res.msg })
     }
@@ -56,7 +59,7 @@ const ProductDetail = ({ product, categs, featured }) => {
                                 <Selector stock={product.stockactual} setQty={setQty} />
                                 <StoreNote stock={product.productsStock} />
                             </SelectorContainer>
-                            <PrimaryButton onClick={handleClick}>Agregar al carrito</PrimaryButton>
+                            <PrimaryButton onClick={handleClick} disabled={showToast}>Agregar al carrito</PrimaryButton>
                         </ButtonsContainer>
                         <Divider />
                         <PaymentMethods />
