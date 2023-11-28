@@ -2,6 +2,7 @@ import { Public_Sans } from "next/font/google"
 import '@/styles/globals.css'
 import Layout from "@/components/layout/Layout"
 import CategoriesContextProvider from "@/context/CategoriesContext"
+import CartContextProvider from "@/context/CartContext"
 
 const publicSans = Public_Sans({
   weight: ["300", "400", "500", "600", "700"],
@@ -10,10 +11,12 @@ const publicSans = Public_Sans({
 
 export default function App({ Component, pageProps }) {
   return (
-    <CategoriesContextProvider>
-      <Layout className={publicSans.className}>
-        <Component {...pageProps} />
-      </Layout>
-    </CategoriesContextProvider>
+    <CartContextProvider>
+      <CategoriesContextProvider>
+        <Layout className={publicSans.className}>
+          <Component {...pageProps} />
+        </Layout>
+      </CategoriesContextProvider>
+    </CartContextProvider>
   )
 }

@@ -6,6 +6,9 @@ import PaymentMethods from "./payment_methods/PaymentMethods"
 import StoreNote from "./store_note/StoreNote"
 import ShippingCalculator from "./shipping_calculator/ShippingCalculator"
 import Selector from "./selector/Selector"
+import ProductsSwiper from "../swipers/products_swiper/ProductsSwiper"
+import Toast from "../toast/Toast"
+import { useCartContext } from "@/context/CartContext"
 import { ContainerFluid, Inner } from "../common_elements/CommonElements"
 import {
     ProductMain,
@@ -18,19 +21,24 @@ import {
     Divider,
     ReturnTitle,
     ReturnNote,
-  } from "./Elements"
-import ProductsSwiper from "../swipers/products_swiper/ProductsSwiper"
+} from "./Elements"
 
 const ProductDetail = ({ product, categs, featured }) => {
 
     const { setCategories } = useCategoriesContext()
+    const { addItem } = useCartContext()
     const [qty, setQty] = useState(1)
+    const [showToast, setShowToast] = useState(false)
+    const [actionResponse, setActionResponse] = useState()
 
     useEffect(() => setCategories(categs), [])
 
     const handleClick = () => {
-        //Add to cart
-        console.log(`Se agregó a carrito ${qty} ${product.nombre}`)
+
+        const res = addItem(product, qty)
+
+        setShowToast(true)
+        setActionResponse({ success: res.success, msg: res.msg })
     }
 
     return (
@@ -60,6 +68,16 @@ const ProductDetail = ({ product, categs, featured }) => {
                 </ProductMain>
                 <ProductsSwiper products={featured} />
             </Inner>
+            {
+                showToast ?
+                <Toast
+                    msg={actionResponse.msg}
+                    success={actionResponse.success}
+                    time={2500}
+                    setShowToast={setShowToast}
+                /> : 
+                null
+            }
         </ContainerFluid>
     )
 }

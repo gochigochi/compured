@@ -15,7 +15,7 @@ export const Inner = styled.div`
     display: flex;
     justify-content: space-between;
     display: grid;
-    grid-template-columns: minmax(100px, 150px) 1fr minmax(250px, 500px);
+    grid-template-columns: minmax(100px, 150px) 1fr minmax(250px, 500px) 50px;
 `
 
 export const LogoContainer = styled(Link)`
@@ -25,4 +25,10 @@ export const LogoContainer = styled(Link)`
 
 export const Logo = styled(Image)`
     object-fit: contain;
+`
+
+export const CartContainer = styled(Link)`
+    display: grid;
+    place-items: center;
+    margin-left: 10px;
 `
