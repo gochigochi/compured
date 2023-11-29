@@ -14,12 +14,10 @@ const Item = ({ item }) => {
 
     const { removeItem } = useCartContext()
 
-    console.log(item)
-
     return (
         <Container>
             <ImageContainer>
-                <Image src={item.image} alt="" width={100} height={100} />
+                <Image src={item.image} alt="" width={100} height={100} style={{"objectFit": "contain"}} />
             </ImageContainer>
             <Details>
                 <Title>{item.name}</Title>

@@ -21,6 +21,8 @@ const CartContextProvider = ({ children }) => {
   }, [])
 
 
+  console.log(cart.length)
+
   // ADD ITEM TO CART
   const addItem = (item, qty) => {
 
@@ -36,6 +38,7 @@ const CartContextProvider = ({ children }) => {
         price: item.preciofinal,
         stock: item.stockactual,
         qty: qty,
+        subtotal: item.preciofinal * qty,
       }
       
       const updatedCart = [...cart, cartItem]
@@ -65,19 +68,25 @@ const CartContextProvider = ({ children }) => {
     return { success: true, msg: `Agregaste ${qty} producto/s al carrito` }
   }
 
-
   // REMOVE ITEM FROM CART
   const removeItem = (id) => {
-    console.log("remove....", id)
+    const filteredCart = cart.filter(item => item.id !== id )
+    updateLocalStorage(filteredCart)
+    setCart(filteredCart)
   }
 
-  // CLEAN CART
-  const resetCart = (item) => {
+  // GET CART TOTAL PRICE
+  const cartTotal = (shipping = 0) => {
 
+    if (cart.length === 1) return cart[0].subtotal + shipping
+
+    const total = cart.reduce((acc, curr) => acc.subtotal + curr.subtotal)
+
+    return total + shipping
   }
 
   return (
-    <CartCtx.Provider value={{ cart, addItem, removeItem }}>
+    <CartCtx.Provider value={{ cart, addItem, removeItem, cartTotal }}>
       {children}
     </CartCtx.Provider>
   )
