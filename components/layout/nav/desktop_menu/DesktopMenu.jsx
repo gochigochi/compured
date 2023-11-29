@@ -1,4 +1,4 @@
-import FlayoutMenu from "@/components/falyout_menu/FlayoutMenu"
+import FlayoutMenu from "@/components/flyout_menu/FlyoutMenu"
 import { MenuContainer, MenuLink } from "./Elements"
 
 const DesktopMenu = () => {

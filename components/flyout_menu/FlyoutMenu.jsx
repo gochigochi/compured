@@ -15,7 +15,7 @@ import {
     SeeAll,
 } from "./Elements"
 
-const FlayoutMenu = ({ children }) => {
+const FlyoutMenu = ({ children }) => {
 
     const router = useRouter()
     const { categories } = useCategoriesContext()
@@ -107,4 +107,4 @@ const FlayoutMenu = ({ children }) => {
     )
 }
 
-export default FlayoutMenu
+export default FlyoutMenu

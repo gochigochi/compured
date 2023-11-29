@@ -1,25 +1,27 @@
 import { useRef } from "react"
+import { useRouter } from "next/router"
 import { SearchSvg } from "@/components/svgs/Svgs"
 import {
-    SearchContainer,
-    SearchInput,
-    Button,
+  SearchContainer,
+  SearchInput,
+  Button,
 } from "./Elements"
 
-const handleSearch = async (term) => {
+// const handleSearch = async (term) => {
 
-  const response = await fetch("https://api-beta.saasargentina.com/v1/productos?callback=productoscallback&busqueda=Auriculares&datosextras=&desde=0&cantidad=100&mostrarimagenes=1&idrubro=0&orden=nombre")
+//   const response = await fetch("https://api-beta.saasargentina.com/v1/productos?callback=productoscallback&busqueda=Auriculares&datosextras=&desde=0&cantidad=100&mostrarimagenes=1&idrubro=0&orden=nombre")
 
-  console.log(response)
+//   console.log(response)
 
-  const json = await response.json()
+//   const json = await response.json()
 
-  console.log(json)
+//   console.log(json)
 
-}
+// }
 
 const Search = () => {
 
+  const router = useRouter()
   const term = useRef()
 
   const onSubmit = (e) => {
@@ -28,24 +30,24 @@ const Search = () => {
     if (term.current && term?.current?.length !== 0) {
 
       const sanitizedTerm = term.current
-      .toLowerCase()
-      .trim()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/[^a-zA-Z0-9 ]/g, "")
-      .replace(/\s+/g, "-")
-  
-      handleSearch(sanitizedTerm)
+        .toLowerCase()
+        .trim()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-zA-Z0-9 ]/g, "")
+        .replace(/\s+/g, "-")
+
+      router.push(`/productos/${sanitizedTerm}`, `/productos/search=${sanitizedTerm}`)
     }
 
   }
 
   return (
     <SearchContainer onSubmit={onSubmit}>
-        <SearchInput type="text" name="term" onChange={(e) => term.current = e.target.value}/>
-        <Button type="submit">
-          <SearchSvg />
-        </Button>
+      <SearchInput type="text" name="term" onChange={(e) => term.current = e.target.value} />
+      <Button type="submit">
+        <SearchSvg />
+      </Button>
     </SearchContainer>
   )
 }

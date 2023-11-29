@@ -7,3 +7,10 @@ export const List = styled.section`
     gap: 25px;
     min-height: 500px;
 `
+
+export const NoProducts = styled.div`
+    width: 100%;
+    height: 80vh;
+    display: grid;
+    place-items: center;
+`

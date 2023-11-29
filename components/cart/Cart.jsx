@@ -13,6 +13,8 @@ const Cart = ({ categs }) => {
 
     useEffect(() => setCategories(categs), [])
 
+
+    // ADD SKELETON UNTIL RENDER!!!
     if (cart.length === 0) {
         return(
         <ContainerFluid>
