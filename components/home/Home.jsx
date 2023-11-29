@@ -4,6 +4,7 @@ import { ContainerFluid, Inner } from '../common_elements/CommonElements'
 import { HomeContainer } from './Elements'
 import BannerCarousel from '../banner_carousel/BannerCarousel'
 import Featured from '../featured/Featured'
+import Services from './services/Services'
 
 const Home = ({ children, products, categs }) => {
 
@@ -17,6 +18,7 @@ const Home = ({ children, products, categs }) => {
             <HomeContainer>
                 <BannerCarousel />
                 <Featured products={products} />
+                <Services />
                 { children }
             </HomeContainer>
         </Inner>

@@ -9,6 +9,10 @@ const nextConfig = {
         port: '',
         pathname: '/saasargentina/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'drive.google.com',
+      }
     ],
   }
 }

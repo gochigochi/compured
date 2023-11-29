@@ -15,11 +15,12 @@ const ShippingCalculator = () => {
 
     //TODO zod simple client validation
 
+
     return (
         <Container>
             <Top>
                 <Title>Envíos</Title>
-                <Logo src="/assets/logos/andreani.png" width={150} height={50} />
+                <Logo src="https://drive.google.com/uc?export=view&id=1Sc6QkoPjD5E3s7XG9yAcnXqTN_TI1uaw" width={150} height={50} />
             </Top>
             <Bottom>
                 <Area>

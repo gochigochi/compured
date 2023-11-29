@@ -18,7 +18,8 @@ export const MenuContainer = styled.div`
     width: 100vw;
     max-width: 400px;
     max-height: 80vh;
-    overflow-y: scroll;
+    overflow-y: auto;
+    overflow-behaviour: contain;
     box-shadow: var(--light-shadow);
     border-radius: 12px;
 `

@@ -4,7 +4,7 @@ import Image from "next/image"
 export const Container = styled.div`
     width: 100%;
     margin: 0 auto;
-    border-radius: 30px;
+    border-radius: 20px;
     overflow: hidden;
 `
 

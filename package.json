@@ -8,6 +8,7 @@
     "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
+    "framer-motion": "^10.16.7",
     "next": "14.0.3",
     "react": "^18",
     "react-dom": "^18",
