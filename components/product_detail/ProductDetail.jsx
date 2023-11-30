@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic"
 import { useEffect, useState } from "react"
 import { useCategoriesContext } from "@/context/CategoriesContext"
 import PrimaryButton from "../buttons/primary/PrimaryButton"
@@ -7,7 +8,6 @@ import StoreNote from "./store_note/StoreNote"
 import ShippingCalculator from "./shipping_calculator/ShippingCalculator"
 import Selector from "./selector/Selector"
 import ProductsSwiper from "../swipers/products_swiper/ProductsSwiper"
-import Toast from "../toast/Toast"
 import { useCartContext } from "@/context/CartContext"
 import { ContainerFluid, Inner } from "../common_elements/CommonElements"
 import {
@@ -23,6 +23,9 @@ import {
     ReturnNote,
 } from "./Elements"
 
+// import Toast from "../toast/Toast"
+const DynToast = dynamic(() => import("../toast/Toast"), { ssr: false })
+
 const ProductDetail = ({ product, categs, featured }) => {
 
     const { setCategories } = useCategoriesContext()
@@ -36,10 +39,6 @@ const ProductDetail = ({ product, categs, featured }) => {
     const handleClick = () => {
 
         const res = addItem(product, qty)
-
-        // TEST IN PRODUCTION
-        console.log("RESPONSE......", res)
-
         setShowToast(true)
         setActionResponse({ success: res.success, msg: res.msg })
     }
@@ -73,7 +72,7 @@ const ProductDetail = ({ product, categs, featured }) => {
             </Inner>
             {
                 showToast ?
-                <Toast
+                <DynToast
                     msg={actionResponse.msg}
                     success={actionResponse.success}
                     time={2500}

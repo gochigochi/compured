@@ -5,7 +5,12 @@ const Button = styled.button`
     border-radius: 25px;
     padding: var(--button-padding);
     color: #fff;
-    cursor: ${({dis}) => dis ? "default" : "pointer"} ;
+    cursor: ${({dis}) => dis ? "default" : "pointer"};
+    transition: all .2s;
+
+    &:hover {
+        ${({dis}) => !dis && "opacity: .8;"}
+    }
 `
 
 const PrimaryButton = ({ children, onClick = () => {}, disabled = false }) => {

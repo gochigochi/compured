@@ -1,4 +1,5 @@
 import { useCartContext } from "@/context/CartContext"
+import { RightArrowSvg } from "@/components/svgs/Svgs"
 import {
   Box,
   Title,
@@ -10,7 +11,6 @@ import {
   Subtotal,
 } from "./Elements"
 import Image from "next/image"
-import { RightArrowSvg } from "@/components/svgs/Svgs"
 
 const TEMP_SHIPPING = 3500
 
@@ -45,7 +45,7 @@ const Summary = ({ cart }) => {
       </Total>
       <CheckoutButton onClick={() => cartTotal()}>
         Pagar
-        <Image src="/assets/logos/mercado-pago.png" alt="" width={50} height={25} />
+        <Image src="https://drive.google.com/uc?export=view&id=1yhHhZtJGhdeDkqq_qAKyiQ9hC-EgEsQc" alt="" width={50} height={25} />
         <i><RightArrowSvg /></i>
       </CheckoutButton>
     </Box>
