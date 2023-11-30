@@ -4,21 +4,6 @@ import Home from '@/components/home/Home'
 
 export default function HomePage({ products, categories }) {
 
-  // const onSubmit = (e) => {
-  //   e.preventDefault()
-
-  //   const formData = new FormData(e.currentTarget)
-
-  //   console.log(formData.get("term"))
-
-  //   const term = formData.get("term")
-
-  //   const sanitizedTerm = term.replace(/[^a-z0-9áéíóúñü _.,-]/gim, '')
-  //   const result = sanitizedTerm.trim()
-
-  //   console.log(result)
-  // }
-
   return (
     <>
       <Head>
@@ -27,12 +12,7 @@ export default function HomePage({ products, categories }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Home products={products} categs={categories}>
-        {/* <form onSubmit={onSubmit}>
-          <input type="text" name="term" />
-          <button>send</button>
-        </form> */}
-      </Home>
+      <Home products={products} categs={categories} />
     </>
   )
 }

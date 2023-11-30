@@ -6,17 +6,19 @@ import { ContainerFluid, Inner } from '../common_elements/CommonElements'
 import { HomeContainer } from './Elements'
 import BannerCarousel from '../banner_carousel/BannerCarousel'
 import Featured from '../featured/Featured'
-
 const DynServices = dynamic(() => import('./services/Services'))
 const DynClients = dynamic(() => import('./clients/Clients'))
+const DynContact = dynamic(() => import('./contact/Contact'))
 
-const Home = ({ children, products, categs }) => {
+const Home = ({ products, categs }) => {
 
   const { setCategories } = useCategoriesContext()
   const clientsRef = useRef()
   const servicesRef = useRef()
+  const contactRef = useRef()
   const clientsInView = useInView(clientsRef, { once: true })
   const servicesInView = useInView(servicesRef, { once: true })
+  const contactInView = useInView(contactRef, { once: true })
 
   useEffect(() => setCategories(categs), [])
 
@@ -30,7 +32,8 @@ const Home = ({ children, products, categs }) => {
                 { servicesInView ? <DynServices /> : null }
                 <div ref={clientsRef}></div>
                 { clientsInView ? <DynClients /> : null }
-                { children }
+                <div ref={contactRef}></div>
+                { contactInView ? <DynContact /> : null }
             </HomeContainer>
         </Inner>
     </ContainerFluid>

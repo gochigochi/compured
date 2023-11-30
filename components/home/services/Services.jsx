@@ -64,6 +64,7 @@ const Services = () => {
                             variants={scaleOnView}
                             initial="initial"
                             whileInView="animate"
+                            viewport={{ once: true }}
                         >
                             <Image
                                 src={item.bg}

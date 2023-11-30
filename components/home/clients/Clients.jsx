@@ -24,6 +24,7 @@ const Clients = () => {
                                     variants={fadeDownIn}
                                     initial="initial"
                                     whileInView="animate"
+                                    viewport={{once: true}}
                                     key={item}
                                 >
                                     <Image

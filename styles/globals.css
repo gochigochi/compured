@@ -10,6 +10,8 @@
   --text-black: #404040;
   --text-light: #A2A4A5;
   --soft-gray: #E2E2E2;
+  --input-border: #cfd7d9;
+  --alert: #e17979;
 
   --button-padding: 10px 20px;
 }
@@ -39,4 +41,13 @@ input, button {
 
 button {
   cursor: pointer;
+}
+
+input, textarea, textarea::placeholder {
+  font-family: 'Public Sans', sans-serif;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: none;
 }

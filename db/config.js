@@ -1,4 +1,4 @@
-import mysql from "serverless-mysql";
+import mysql from "serverless-mysql"
 
 export const pool = mysql({
   config: {
@@ -7,4 +7,4 @@ export const pool = mysql({
     password: "",
     database: "pruebaCompured",
   },
-});  
+})

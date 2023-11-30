@@ -10,7 +10,7 @@ export const SearchInput = styled.input`
     width: 100%;
     height: 35px;
     border-radius: 500px 0 0 500px;
-    border: 1px solid #cfd7d9;
+    border: 1px solid var(--input-border);
     padding: 5px 20px;
     font-size: 1rem;
 `

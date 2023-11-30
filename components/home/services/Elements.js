@@ -15,9 +15,9 @@ export const Container = styled.section`
 
 export const Card = styled(motion.div)`
     position: relative;
-    width: 32%;
+    width: 30%;
     height: 500px;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     border-radius: 12px;
     overflow: hidden;
     padding: 25px;
@@ -59,12 +59,11 @@ export const Card = styled(motion.div)`
 
 export const Title = styled.h3`
     color: #fff;
-    font-size: 2.3rem;
+    font-size: 2rem;
 `
 
 export const Text = styled.p`
     color: #fff;
-    font-size: 1.2rem;
     line-height: 1.4;
     border-left: 5px solid var(--blue);
     padding-left: 10px;
