@@ -2,7 +2,7 @@
 export const sendMail = async (url, data) => {
 
     const controller = new AbortController()
-    setTimeout(() => controller.abort(), 5000);
+    setTimeout(() => controller.abort(), 13000);
 
     try {
 

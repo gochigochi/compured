@@ -1,17 +1,19 @@
 import nodemailer from "nodemailer"
-import { ContactMessageSchema } from "@/utils/zodSchemas"
+// import { ContactMessageSchema } from "@/utils/zodSchemas"
+
+// SUSPENDER VALIDACIONES ok
+// RES EN VEZ DE THROW ok
 
 export default async function handler(req, res) {
 
   const body = JSON.parse(req.body)
 
   // SERVER VALIDATION
-  const validation = ContactMessageSchema.safeParse(body)
+  // const validation = ContactMessageSchema.safeParse(body)
   
-  if (!validation.success) {
-    throw new Error("Error en los datos del cliente")
-    res.status(400)
-  }
+  // if (!validation.success) {
+  //   throw new Error("Error en los datos del cliente")
+  // }
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP,
@@ -37,8 +39,7 @@ export default async function handler(req, res) {
 
   } catch (err) {
 
-    console.log(err)
-
-    res.status(400).json({ msg: err })
+    // throw new Error("Este es el error....", err)
+    res.status(400)
   }
 }

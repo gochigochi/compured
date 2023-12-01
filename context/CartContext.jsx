@@ -20,9 +20,6 @@ const CartContextProvider = ({ children }) => {
     }
   }, [])
 
-
-  console.log(cart.length)
-
   // ADD ITEM TO CART
   const addItem = (item, qty) => {
 
