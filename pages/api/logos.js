@@ -1,7 +1,7 @@
 import { pool } from "../../db/config";
 
 export default function handler(req, res) {
-  if(req.method === 'GET'){
+  if (req.method === 'GET') {
     pool.query(
       `SELECT * FROM logos`,
       function (err, result, fields) {
@@ -11,7 +11,7 @@ export default function handler(req, res) {
       }
     );
   }
-  if(req.method === 'POST'){
+  if (req.method === 'POST') {
     const { file, alt } = req.body
     pool.query(
       `INSERT INTO imagenes ((base64Logo,  alt) VALUES (${file}, '${alt}')`,
@@ -23,7 +23,7 @@ export default function handler(req, res) {
     );
   }
 
-  if(req.method === 'DELETE'){
+  if (req.method === 'DELETE') {
     const { id } = req.body
     pool.query(
       `DELETE FROM logos WHERE id = ${id}`,

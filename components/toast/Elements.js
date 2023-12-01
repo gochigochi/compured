@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components"
 export const Container = styled.div`
     position: fixed;
     bottom: 25px;
+    left: 0;
     width: 100vw;
     display: flex;
     justify-content: center;

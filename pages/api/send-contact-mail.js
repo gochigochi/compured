@@ -1,32 +1,38 @@
-const nodemailer = require("nodemailer")
+import nodemailer from "nodemailer"
+import { ContactMessageSchema } from "@/utils/zodSchemas"
 
 export default async function handler(req, res) {
 
-  // SERVER VALIDATION
+  const body = JSON.parse(req.body)
 
-  console.log("API CALL")
+  // SERVER VALIDATION
+  const validation = ContactMessageSchema.safeParse(body)
   
+  if (!validation.success) {
+    throw new Error("Error en los datos del cliente")
+    res.status(400)
+  }
+
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP,
     port: 465,
-    secure: false,
+    secure: true,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASSWORD,
     },
   })
-  
+
   try {
 
-    const info = await transporter.sendMail({
-      from: 'diego@gmail', // sender address
-      to: "diegoeliseoiovane@gmail.com", // list of receivers
-      subject: "hola", // Subject line
-      text: "hola", // plain text body
-      html: "<b>sdfadlasjk;a</b>", // html body
+    await transporter.sendMail({
+      from: "info@compured.com.ar", // sender address
+      to: "info@compured.com.ar", // list of receivers
+      subject: `Mensaje de ${body.name} desde Compured`, // Subject line
+      html: `<b>${body.message}</b><br></br><p>${body.email}</p>`, // html body
     })
 
-    console.log("Message sent: %s", info.messageId);
+    res.status(200).json({ msg: "ok" })
 
   } catch (err) {
 
@@ -34,6 +40,4 @@ export default async function handler(req, res) {
 
     res.status(400).json({ msg: err })
   }
-
-  res.status(200).json({ msg: "ok" })
 }

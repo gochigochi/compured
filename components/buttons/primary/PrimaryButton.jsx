@@ -7,6 +7,10 @@ const Button = styled.button`
     color: #fff;
     cursor: ${({dis}) => dis ? "default" : "pointer"};
     transition: all .2s;
+    min-height: 20px;
+    min-width: 60px;
+    display: grid;
+    place-items: center;
 
     &:hover {
         ${({dis}) => !dis && "opacity: .8;"}
