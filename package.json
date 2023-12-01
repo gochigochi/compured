@@ -8,6 +8,7 @@
     "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
+    "@react-google-maps/api": "^2.19.2",
     "framer-motion": "^10.16.7",
     "next": "14.0.3",
     "nodemailer": "^6.9.7",
