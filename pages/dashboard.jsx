@@ -1,8 +1,7 @@
-import React from 'react'
 
-const DashboardPage = ({ response }) => {
+const DashboardPage = ({ data }) => {
 
-    console.log("RESPONSE....", response)
+    console.log(data)
 
     return (
         <div>DashboardPage</div>
@@ -11,16 +10,23 @@ const DashboardPage = ({ response }) => {
 
 export default DashboardPage
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
 
-    const response = await fetch(`https://api-alfa.saasargentina.com/v0.2/login?iue=PuaNYqpDhRBJ7K80I8WC&S=&email=info@compured.com.ar&pass=Karaoke3`, {
-        method: 'GET',
-    })
+    const isAuth = context.req.cookies.accessToken === process.env.ADMIN_UNIQUE_IDENTIFIER
+    
+    if (!isAuth) {
+        return {
+            props: {
+                data: null,
+            }
+        }
+    }
 
-    const json = await response.json()
+    // MYSQL CALL
 
-
-    console.log("REESPONES>.....", json)
-
-    return { props: { response: json } }
+    return { 
+        props: {
+            data: [],
+        }
+    }
 }

@@ -1,4 +1,5 @@
 import { useState, useRef } from "react"
+import { useRouter } from "next/router"
 import dynamic from "next/dynamic"
 import PrimaryButton from "@/components/buttons/primary/PrimaryButton"
 import { AdminLoginSchema } from "@/utils/zodSchemas"
@@ -13,6 +14,7 @@ const DynButtonLoader = dynamic(() => import("@/components/loaders/ButtonLoader/
 
 const LoginForm = () => {
 
+    const router = useRouter()
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
     const [inputError, setInputError] = useState(null)
@@ -46,7 +48,7 @@ const LoginForm = () => {
             return
         }
 
-        setLoading(false)
+        router.push("/dashboard")
     }
 
     return (
