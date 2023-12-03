@@ -1,6 +1,6 @@
 import { Note } from "./Elements"
 
-const StoreNote = ({ stock }) => {
+const StockNote = ({ stock }) => {
     return (
         <Note>
             <span>{ stock[0].stock > 0 ? `Casa Matriz (${stock[0].stock})` : null }</span>
@@ -9,4 +9,4 @@ const StoreNote = ({ stock }) => {
     )
 }
 
-export default StoreNote
+export default StockNote

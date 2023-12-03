@@ -45,7 +45,7 @@ const Summary = ({ cart }) => {
       </Total>
       <CheckoutButton onClick={() => cartTotal()}>
         Pagar
-        <Image src="https://drive.google.com/uc?export=view&id=1yhHhZtJGhdeDkqq_qAKyiQ9hC-EgEsQc" alt="" width={50} height={25} />
+        <Image src="/assets/mercado-pago.png" alt="" width={50} height={25} />
         <i><RightArrowSvg /></i>
       </CheckoutButton>
     </Box>

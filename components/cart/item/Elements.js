@@ -9,6 +9,8 @@ export const Container = styled.div`
 
 export const ImageContainer = styled.div`
     position: relative;
+    width: 140px;
+    height: 140px;
     padding: 20px;
     overflow: hidden;
     border-radius: 8px;

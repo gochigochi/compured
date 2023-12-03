@@ -1,29 +1,25 @@
 import dynamic from "next/dynamic"
 import { useEffect, useState } from "react"
 import { useCategoriesContext } from "@/context/CategoriesContext"
-import PrimaryButton from "../buttons/primary/PrimaryButton"
 import ProductSwiper from "../swipers/product_swiper/ProductSwiper"
 import PaymentMethods from "./payment_methods/PaymentMethods"
-import StoreNote from "./store_note/StoreNote"
 import ShippingCalculator from "./shipping_calculator/ShippingCalculator"
-import Selector from "./selector/Selector"
 import ProductsSwiper from "../swipers/products_swiper/ProductsSwiper"
 import { useCartContext } from "@/context/CartContext"
 import { ContainerFluid, Inner } from "../common_elements/CommonElements"
+import AddToCart from "../add_to_cart/AddToCart"
+import Selector from "../add_to_cart/selector/Selector"
 import {
     ProductMain,
     Title,
     Price,
     Description,
     Details,
-    ButtonsContainer,
-    SelectorContainer,
     Divider,
     ReturnTitle,
     ReturnNote,
 } from "./Elements"
 
-// import Toast from "../toast/Toast"
 const DynToast = dynamic(() => import("../toast/Toast"), { ssr: false })
 
 const ProductDetail = ({ product, categs, featured }) => {
@@ -52,14 +48,14 @@ const ProductDetail = ({ product, categs, featured }) => {
                         <Title>{product?.nombre}</Title>
                         <Price>${product?.preciofinal}</Price>
                         <Description>{product?.nombre}</Description>
-                        <ButtonsContainer>
-                            <SelectorContainer>
-                                <span>Cantidad</span>
-                                <Selector stock={product.stockactual} setQty={setQty} />
-                                <StoreNote stock={product.productsStock} />
-                            </SelectorContainer>
-                            <PrimaryButton onClick={handleClick} disabled={showToast}>Agregar al carrito</PrimaryButton>
-                        </ButtonsContainer>
+                        <AddToCart>
+                            <AddToCart.Selector stock={product.stockactual} setQty={setQty}>
+                                <Selector.StockNote stock={product.productsStock} />
+                            </AddToCart.Selector>
+                            <AddToCart.AddBtn onClick={handleClick} state={showToast}>
+                                Agregar al carrito
+                            </AddToCart.AddBtn>
+                        </AddToCart>
                         <Divider />
                         <PaymentMethods />
                         <ShippingCalculator />
@@ -72,13 +68,13 @@ const ProductDetail = ({ product, categs, featured }) => {
             </Inner>
             {
                 showToast ?
-                <DynToast
-                    msg={actionResponse.msg}
-                    success={actionResponse.success}
-                    time={2500}
-                    setShowToast={setShowToast}
-                /> : 
-                null
+                    <DynToast
+                        msg={actionResponse.msg}
+                        success={actionResponse.success}
+                        time={2500}
+                        setShowToast={setShowToast}
+                    /> :
+                    null
             }
         </ContainerFluid>
     )
