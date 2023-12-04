@@ -1,5 +1,6 @@
 import Search from './search/Search'
 import DesktopMenu from './desktop_menu/DesktopMenu'
+import CartIcon from './cart_icon/CartIcon'
 import {
     CartContainer,
     Container,
@@ -7,7 +8,6 @@ import {
     Logo,
     LogoContainer,
 } from './Elements'
-import { CartSvg } from '@/components/svgs/Svgs'
 
 const Nav = () => {
     return (
@@ -19,7 +19,7 @@ const Nav = () => {
                 <DesktopMenu />
                 <Search />
                 <CartContainer href="/carrito">
-                    <CartSvg />
+                    <CartIcon />
                 </CartContainer>
             </Inner>
         </Container>

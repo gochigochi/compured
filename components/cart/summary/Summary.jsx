@@ -1,22 +1,47 @@
+import dynamic from "next/dynamic"
+import { useState, useEffect } from "react"
 import { useCartContext } from "@/context/CartContext"
-import { RightArrowSvg } from "@/components/svgs/Svgs"
+import { customFetch } from "@/utils/customFetch"
 import {
   Box,
   Title,
   Item,
   Name,
   Total,
-  CheckoutButton,
+  CheckoutButtonContainer,
   TotalPrice,
   Subtotal,
 } from "./Elements"
-import Image from "next/image"
+const DynMpCheckoutBtn = dynamic(() => import("@/components/mp_checkout_btn/MpCheckoutBtn"), { ssr: false })
 
 const TEMP_SHIPPING = 3500
 
-const Summary = ({ cart }) => {
+const Summary = () => {
 
-  const { cartTotal } = useCartContext()
+  const { cart, cartTotal } = useCartContext()
+  const [loading, setLoading] = useState(false)
+  const [preferenceId, setPreferenceId] = useState(null)
+
+  useEffect(() => {
+
+    const preparePayment = async () => {
+
+      const productsData = cart.map(product => ({ id: product.id, qty: product.qty }))
+
+      const response = await customFetch("/api/checkout", { productsData: productsData })
+
+      console.log("CLIENT RESPONSE....", response)
+
+      if (response.error) {
+        console.log("OCURRIO UN ERROR")
+      }
+
+      setPreferenceId(response.id)
+    }
+
+    preparePayment()
+
+  }, [cart])
 
   return (
     <Box>
@@ -43,11 +68,9 @@ const Summary = ({ cart }) => {
         <p>Total</p>
         <TotalPrice>${cartTotal(TEMP_SHIPPING)}</TotalPrice>
       </Total>
-      <CheckoutButton onClick={() => cartTotal()}>
-        Pagar
-        <Image src="/assets/mercado-pago.png" alt="" width={50} height={25} />
-        <i><RightArrowSvg /></i>
-      </CheckoutButton>
+      <CheckoutButtonContainer loading={loading}>
+        <DynMpCheckoutBtn preferenceId={preferenceId} />
+      </CheckoutButtonContainer>
     </Box>
   )
 }

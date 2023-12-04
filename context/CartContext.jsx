@@ -12,7 +12,7 @@ const CartContextProvider = ({ children }) => {
   useEffect(() => {
 
     if (typeof window !== 'undefined' && localStorage.getItem("cart")) {
-      
+
       const localCart = JSON.parse(localStorage.getItem("cart"))
 
       setCart(localCart)
@@ -24,10 +24,10 @@ const CartContextProvider = ({ children }) => {
   const addItem = (item, qty) => {
 
     const index = cart.findIndex(i => i.id === item.idproducto)
-    
+
     //IF NEW ITEM
     if (index === -1) {
-      
+
       const cartItem = {
         id: item.idproducto,
         name: item.nombre,
@@ -37,7 +37,7 @@ const CartContextProvider = ({ children }) => {
         qty: qty,
         subtotal: item.preciofinal * qty,
       }
-      
+
       const updatedCart = [...cart, cartItem]
 
       setCart(updatedCart)
@@ -51,10 +51,10 @@ const CartContextProvider = ({ children }) => {
 
     // IF QTY SELECTED IS MORE THAN STOCK
     if (newCart[index].qty === item.stockactual) {
-      
+
       return { success: false, msg: "No hay más stock" }
     }
-    
+
     // IF ITEM EXISTS UPDATE QTY
     newCart[index].qty += qty
 
@@ -67,7 +67,7 @@ const CartContextProvider = ({ children }) => {
 
   // REMOVE ITEM FROM CART
   const removeItem = (id) => {
-    const filteredCart = cart.filter(item => item.id !== id )
+    const filteredCart = cart.filter(item => item.id !== id)
     updateLocalStorage(filteredCart)
     setCart(filteredCart)
   }
@@ -75,15 +75,31 @@ const CartContextProvider = ({ children }) => {
   // GET CART TOTAL PRICE
   const cartTotal = (shipping = 0) => {
 
-    if (cart.length === 1) return cart[0].subtotal + shipping
+    if (cart.length > 0) {
 
-    const total = cart.reduce((acc, curr) => acc.subtotal + curr.subtotal)
+      const total = cart.reduce((acc, curr) => acc.subtotal + curr.subtotal, 0)
 
-    return total + shipping
+      return total + shipping
+    }
+
+    return 0
+    
+  }
+
+  const cartTotalItems = () => {
+
+    // if (cart && cart?.length > 0) {
+
+    //   const total = cart.reduce((acc, curr) => acc.qty + curr.qty)
+
+    //   return total
+    // }
+
+    return 0
   }
 
   return (
-    <CartCtx.Provider value={{ cart, addItem, removeItem, cartTotal }}>
+    <CartCtx.Provider value={{ cart, addItem, removeItem, cartTotal, cartTotalItems }}>
       {children}
     </CartCtx.Provider>
   )

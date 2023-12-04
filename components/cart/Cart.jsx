@@ -34,7 +34,7 @@ const Cart = ({ categs }) => {
                         }
                     </ItemList>
                     <SummaryContainer>
-                        <Summary cart={cart} />
+                        <Summary />
                     </SummaryContainer>
                 </CartContainer>
             </Inner>

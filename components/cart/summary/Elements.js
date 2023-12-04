@@ -52,49 +52,9 @@ export const TotalPrice = styled.p`
     font-size: 1.5rem;
 `
 
-export const CheckoutButton = styled.div`
-    background-color: var(--blue);
-    color: #fff;
-    width: 100%;
-    border-radius: 4px;
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 25px;
-    cursor: pointer;
-    transition: all .2s;
+export const CheckoutButtonContainer = styled.div`
     position: relative;
+    margin-top: 25px;
+    pointer-events: ${({loading}) => loading ? "none" : "auto"};
 
-    img {
-        position: absolute;
-        right: 15px;
-        margin-left: 15px;
-        object-fit: contain;
-        background-color: white;
-        color: transparent;
-        padding: 4px;
-        border-radius: 50px;
-        transition: right .2s;
-    }
-
-    i {
-        position: absolute;
-        opacity: 0;
-        right: 5px;
-        transition: all .2s;
-    }
-
-    &:hover {
-        background-color: var(--dark-blue);
-
-        img {
-            right: 40px;
-        }
-
-        i {
-            right: 10px;
-            opacity: 1;
-        }
-    }
 `
