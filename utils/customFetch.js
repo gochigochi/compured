@@ -16,7 +16,7 @@ export const customFetch = async (url, data) => {
 
     } catch (err) {
 
-        console.log("Error featching: ...", err)
+        console.log("Error at custom fetch: ", err)
         return { error: true }
     }
 }

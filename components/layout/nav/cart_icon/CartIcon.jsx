@@ -9,7 +9,7 @@ const CartIcon = () => {
     return (
         <IconContainer>
             <CartSvg />
-            {/* <Badge>{cartTotalItems()}</Badge> */}
+            <Badge>{cartTotalItems()}</Badge>
         </IconContainer>
     )
 }

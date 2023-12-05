@@ -4,8 +4,8 @@ import Image from "next/image"
 export const Container = styled.button`
     width: 100%;
     border-radius: 8px;
-    height: 330px;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     padding: 3px 3px 14px;
     box-shadow: var(--light-shadow);
     border: 1px solid rgba(25, 141, 179, 0.1);
@@ -49,9 +49,16 @@ export const Title = styled.p`
 export const Price = styled.p`
     font-size: 1.5rem;
     margin-bottom: 15px;
+    color: ${({available}) => available ? "inherit" : "var(--soft-gray)"};
 `
 
 export const Text = styled.p`
     color: var(--text-light);
     font-size: 0.8em;
+`
+
+export const Stock = styled.span`
+    color: var(--alert);
+    font-size: .8rem;
+    margin-left: 8px;
 `

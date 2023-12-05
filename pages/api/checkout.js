@@ -28,21 +28,24 @@ export default async function handler(req, res) {
 
       const response = await Promise.all(promises)
 
-      // console.log("RESPONSEEEEEEEEEEE", response)
       items = response
 
     } catch (err) {
+
       console.log(err)
     }
   }
 
   await getProducts()
 
-  console.log("ITEMS.....", items)
+  // console.log("ITEMS.....", items)
 
   try {
 
     const response = await preference.create({
+      // AGREGAR:
+      //https://www.mercadopago.com.ar/developers/en/reference/preferences/_checkout_preferences/post
+      // currency_id
       body: {
         items: items,
       }

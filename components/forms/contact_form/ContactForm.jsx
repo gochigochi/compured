@@ -2,7 +2,7 @@ import { useState, useRef } from "react"
 import dynamic from "next/dynamic"
 import PrimaryButton from "@/components/buttons/primary/PrimaryButton"
 import { ContactMessageSchema } from "@/utils/zodSchemas"
-import { sendMail } from "@/utils/sendMail"
+import { customFetch } from "@/utils/customFetch"
 import {
   Form,
   InputContainer,
@@ -36,7 +36,9 @@ const ContactForm = () => {
       return
     }
 
-    const response = await sendMail("/api/send-contact-mail", validation.data)
+    const response = await customFetch("/api/send-contact-mail", validation.data)
+
+    console.log("CONTACT RESPONSE", response)
 
     if (!response.success) {
       setError(true)

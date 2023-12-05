@@ -35,11 +35,10 @@ export default async function handler(req, res) {
       html: `<b>${body.message}</b><br></br><p>${body.email}</p>`, // html body
     })
 
-    res.status(200).json({ msg: "ok" })
+    res.status(200).json({ success: true })
 
   } catch (err) {
 
-    // throw new Error("Este es el error....", err)
-    res.status(400)
+    res.status(400).json({ success: false })
   }
 }

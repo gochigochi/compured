@@ -72,30 +72,25 @@ const CartContextProvider = ({ children }) => {
     setCart(filteredCart)
   }
 
-  // GET CART TOTAL PRICE
+  // GET CART TOTAL PRICE (if no shipping parameter make it 0)
   const cartTotal = (shipping = 0) => {
 
-    if (cart.length > 0) {
+    const temp = cart.map(product => product.subtotal)
 
-      const total = cart.reduce((acc, curr) => acc.subtotal + curr.subtotal, 0)
+    const subtotal = temp.reduce((total, productPrice) => total + productPrice, 0)
 
-      return total + shipping
-    }
+    const total = subtotal + shipping
 
-    return 0
-    
+    return total.toFixed(2)
   }
 
   const cartTotalItems = () => {
 
-    // if (cart && cart?.length > 0) {
+    const temp = cart.map(product => product.qty)
 
-    //   const total = cart.reduce((acc, curr) => acc.qty + curr.qty)
+    const total = temp.reduce((total, productQty) => total + productQty, 0)
 
-    //   return total
-    // }
-
-    return 0
+    return total
   }
 
   return (

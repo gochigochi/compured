@@ -34,7 +34,7 @@ const ProductsSwiper = ({ products }) => {
           products.map(product => {
             return (
               <SwiperSlide key={product.idproducto}>
-                <ProductCard product={product} />
+                <ProductCard product={product} style={{"height": "330px"}} />
               </SwiperSlide>
             )
           })

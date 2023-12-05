@@ -11,7 +11,7 @@ const ProductsList = ({ products, categs }) => {
     useEffect(() => setCategories(categs), [])
 
     if (products.length === 0) {
-        return(
+        return (
             <ContainerFluid>
                 <NoProducts>No se encontraron products. Intente con términos más sencillos.</NoProducts>
             </ContainerFluid>
@@ -24,7 +24,13 @@ const ProductsList = ({ products, categs }) => {
                 <List>
                     {
                         products?.map(product => {
-                            return <ProductCard key={product.idproducto} product={product} />
+                            return (
+                                <ProductCard
+                                    key={product.idproducto}
+                                    product={product}
+                                    style={{ "height": "330px" }}
+                                />
+                            )
                         })
                     }
                 </List>

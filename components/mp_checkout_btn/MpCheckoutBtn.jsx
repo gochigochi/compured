@@ -5,7 +5,7 @@ const MpCheckoutBtn = ({ preferenceId }) => {
 
     const customization = {
         visual: {
-            buttonBackground: "#198db3",
+            // buttonBackground: "#198db3",
         },
         checkout: {
             theme: {
