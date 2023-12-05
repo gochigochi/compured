@@ -1,9 +1,6 @@
 import nodemailer from "nodemailer"
 // import { ContactMessageSchema } from "@/utils/zodSchemas"
 
-// SUSPENDER VALIDACIONES ok
-// RES EN VEZ DE THROW ok
-
 export default async function handler(req, res) {
 
   const body = JSON.parse(req.body)
@@ -39,6 +36,6 @@ export default async function handler(req, res) {
 
   } catch (err) {
 
-    res.status(400).json({ success: false })
+    res.status(400).json({ success: false, msg: err })
   }
 }

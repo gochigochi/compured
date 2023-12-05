@@ -41,6 +41,7 @@ const ContactForm = () => {
     console.log("CONTACT RESPONSE", response)
 
     if (!response.success) {
+      console.log("IN ERROR...", response.msg)
       setError(true)
       setLoading(false)
       return

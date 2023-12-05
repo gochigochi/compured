@@ -3,6 +3,7 @@ import { MercadoPagoConfig, Preference } from "mercadopago"
 
 export default async function handler(req, res) {
 
+  const URL = "https://0604-2800-810-428-8ef5-d16c-7201-b175-b2e2.ngrok-free.app"
   const client = new MercadoPagoConfig({ accessToken: process.env.MP_ACCESS_TOKEN_TEST })
   const preference = new Preference(client)
   const { productsData } = JSON.parse(req.body)
@@ -11,7 +12,7 @@ export default async function handler(req, res) {
   const promises = productsData.map(async product => {
 
     const dbProduct = await getProductById(product.id)
-    const price = Number(dbProduct.precio) 
+    const price = Number(dbProduct.preciofinal) 
     const qty = Number(product.qty)
 
     return {
@@ -38,16 +39,25 @@ export default async function handler(req, res) {
 
   await getProducts()
 
-  // console.log("ITEMS.....", items)
-
   try {
 
     const response = await preference.create({
-      // AGREGAR:
-      //https://www.mercadopago.com.ar/developers/en/reference/preferences/_checkout_preferences/post
-      // currency_id
       body: {
         items: items,
+        expires: true,
+        back_urls: {
+          // succes: "https://compured.wemix.wiz.com.ar/",
+          // pending: "https://compured.wemix.wiz.com.ar/",
+          // failure: "https://compured.wemix.wiz.com.ar/"
+          succes: `${URL}/`,
+          pending: `${URL}/`,
+          failure: `${URL}/`,
+        },
+        notification_url: `${URL}/api/mp-notifications`
+        // shipments: {
+        //   mode: "custom",
+        //   cost: 3500 //TODO
+        // }
       }
     })
 

@@ -4,9 +4,6 @@ import { useEffect } from 'react'
 const MpCheckoutBtn = ({ preferenceId }) => {
 
     const customization = {
-        visual: {
-            // buttonBackground: "#198db3",
-        },
         checkout: {
             theme: {
                 elementsColor: "#198db3",

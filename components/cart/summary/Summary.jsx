@@ -28,9 +28,7 @@ const Summary = () => {
 
       const productsData = cart.map(product => ({ id: product.id, qty: product.qty }))
 
-      const response = await customFetch("/api/checkout", { productsData: productsData })
-
-      console.log("CLIENT RESPONSE....", response)
+      const response = await customFetch("/api/mp-create-preference", { productsData: productsData })
 
       if (response.error) {
         console.log("OCURRIO UN ERROR")
@@ -68,9 +66,12 @@ const Summary = () => {
         <p>Total</p>
         <TotalPrice>${cartTotal(TEMP_SHIPPING)}</TotalPrice>
       </Total>
-      <CheckoutButtonContainer loading={loading}>
-        <DynMpCheckoutBtn preferenceId={preferenceId} />
-      </CheckoutButtonContainer>
+      {
+        preferenceId ?
+        <CheckoutButtonContainer loading={loading}>
+          <DynMpCheckoutBtn preferenceId={preferenceId} />
+        </CheckoutButtonContainer> : null
+      }
     </Box>
   )
 }
