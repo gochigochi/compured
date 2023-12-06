@@ -5,6 +5,10 @@ export const ContainerFluid = styled.div`
     padding: 30px 12px;
     height: 100%;
     ${({bgcolor}) => bgcolor && `background-color: ${bgcolor}`}
+
+    @media all and (max-width: 650px) {
+        padding: 8px 10px;
+    }
 `
 
 export const Inner = styled.div`
@@ -12,6 +16,10 @@ export const Inner = styled.div`
     margin: 0 auto;
     padding: 0 20px;
     height: 100%;
+
+    @media all and (max-width: 650px) {
+        padding: 0px;
+    }
 `
 
 export const PageTitle = styled.h1`

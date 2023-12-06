@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic"
-import { useEffect, useState } from "react"
-import { useCategoriesContext } from "@/context/CategoriesContext"
+import { useState } from "react"
+import withCategories from "@/hocs/withCategories"
 import ProductSwiper from "../swipers/product_swiper/ProductSwiper"
 import PaymentMethods from "./payment_methods/PaymentMethods"
 import ShippingCalculator from "./shipping_calculator/ShippingCalculator"
@@ -24,13 +24,10 @@ const DynToast = dynamic(() => import("../toast/Toast"), { ssr: false })
 
 const ProductDetail = ({ product, categs, featured }) => {
 
-    const { setCategories } = useCategoriesContext()
     const { addItem } = useCartContext()
     const [qty, setQty] = useState(1)
     const [showToast, setShowToast] = useState(false)
     const [actionResponse, setActionResponse] = useState()
-
-    useEffect(() => setCategories(categs), [])
 
     const handleClick = () => {
 
@@ -80,4 +77,4 @@ const ProductDetail = ({ product, categs, featured }) => {
     )
 }
 
-export default ProductDetail
+export default withCategories(ProductDetail)

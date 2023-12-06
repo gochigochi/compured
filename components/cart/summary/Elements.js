@@ -57,4 +57,8 @@ export const CheckoutButtonContainer = styled.div`
     margin-top: 25px;
     pointer-events: ${({loading}) => loading ? "none" : "auto"};
 
+    button {
+        min-width: 10px !important;
+        padding: 16px 0 !important;
+    }
 `

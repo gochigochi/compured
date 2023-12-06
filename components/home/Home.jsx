@@ -1,8 +1,8 @@
 import dynamic from 'next/dynamic'
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { useInView } from 'framer-motion'
-import { useCategoriesContext } from '@/context/CategoriesContext'
 import { ContainerFluid, Inner } from '../common_elements/CommonElements'
+import withCategories from '@/hocs/withCategories'
 import { HomeContainer } from './Elements'
 import BannerCarousel from '../banner_carousel/BannerCarousel'
 import Featured from '../featured/Featured'
@@ -12,13 +12,10 @@ const DynContact = dynamic(() => import('./contact/Contact'))
 
 const Home = ({ products, categs }) => {
 
-  const { setCategories } = useCategoriesContext()
   const clientsRef = useRef()
   const contactRef = useRef()
   const clientsInView = useInView(clientsRef, { once: true })
   const contactInView = useInView(contactRef, { once: true })
-
-  useEffect(() => setCategories(categs), [])
 
   return (
     <ContainerFluid>
@@ -37,4 +34,4 @@ const Home = ({ products, categs }) => {
   )
 }
 
-export default Home
+export default withCategories(Home)

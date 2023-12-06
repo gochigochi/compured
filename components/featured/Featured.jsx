@@ -1,4 +1,6 @@
 import { SectionTitle, SectionTitleSub } from "../common_elements/CommonElements"
+import ErrorBoundary from "../errors/ErrorBoundary"
+import ComponentError from "../errors/component_error/ComponentError"
 import ProductsSwiper from "../swipers/products_swiper/ProductsSwiper"
 
 const Featured = ({ products }) => {
@@ -6,7 +8,9 @@ const Featured = ({ products }) => {
         <section>
             <SectionTitle>Novedades</SectionTitle>
             <SectionTitleSub>Destacados y recomendados</SectionTitleSub>
-            <ProductsSwiper products={products} />
+            <ErrorBoundary fallback={<ComponentError />}>
+                <ProductsSwiper products={products} />
+            </ErrorBoundary>
         </section>
     )
 }

@@ -1,7 +1,6 @@
 import styled from "styled-components"
 
 export const CartContainer = styled.div`
-    
     @media all and (min-width: 960px) {
         display: grid;
         grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -13,11 +12,20 @@ export const ItemList = styled.div`
     border-top: 1px solid var(--soft-gray);
     grid-column: span 7 / span 7;
     margin-right: 50px;
+
+    @media all and (max-width: 960px) {
+        margin-right: 0;
+        margin-bottom: 45px;    
+    }
 `
 
 export const SummaryContainer = styled.div`
     grid-column: span 5 / span 5;
     max-width: 450px;
+
+    @media all and (max-width: 960px) {
+        max-width: unset;
+    }
 `
 
 export const EmptyCart = styled.div`

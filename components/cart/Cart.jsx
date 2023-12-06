@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useCategoriesContext } from '@/context/CategoriesContext'
+import withCategories from '@/hocs/withCategories'
 import { useCartContext } from '@/context/CartContext'
 import { ContainerFluid, Inner, PageTitle } from '../common_elements/CommonElements'
 import { CartContainer, EmptyCart, ItemList, SummaryContainer } from './Elements'
@@ -12,11 +12,9 @@ import PrimaryButton from '../buttons/primary/PrimaryButton'
 const Cart = ({ categs }) => {
 
     const { cart } = useCartContext()
-    const { setCategories } = useCategoriesContext()
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        setCategories(categs)
         setLoading(false)
     }, [])
 
@@ -59,4 +57,4 @@ const Cart = ({ categs }) => {
     )
 }
 
-export default Cart
+export default withCategories(Cart)
