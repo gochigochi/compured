@@ -1,12 +1,5 @@
 import styled from "styled-components"
 
-export const EmptyCart = styled.div`
-    width: 100%;
-    height: 100vh;
-    display: grid;
-    place-items: center;
-`
-
 export const CartContainer = styled.div`
     
     @media all and (min-width: 960px) {
@@ -25,4 +18,14 @@ export const ItemList = styled.div`
 export const SummaryContainer = styled.div`
     grid-column: span 5 / span 5;
     max-width: 450px;
+`
+
+export const EmptyCart = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
 `

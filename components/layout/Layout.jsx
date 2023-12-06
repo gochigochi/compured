@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
     return (
         <>
             <Nav />
-            <main>{children}</main>
+            <main style={{"flex": "1 0 0"}}>{children}</main>
             <Footer />
         </>
     )

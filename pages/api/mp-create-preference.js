@@ -3,7 +3,7 @@ import { MercadoPagoConfig, Preference } from "mercadopago"
 
 export default async function handler(req, res) {
 
-  const URL = "https://0604-2800-810-428-8ef5-d16c-7201-b175-b2e2.ngrok-free.app"
+  const URL = "https://5a8c-2800-810-428-8ef5-4f6d-d5c2-cbb0-d736.ngrok-free.app"
   const client = new MercadoPagoConfig({ accessToken: process.env.MP_ACCESS_TOKEN_TEST })
   const preference = new Preference(client)
   const { productsData } = JSON.parse(req.body)
@@ -49,7 +49,7 @@ export default async function handler(req, res) {
           // succes: "https://compured.wemix.wiz.com.ar/",
           // pending: "https://compured.wemix.wiz.com.ar/",
           // failure: "https://compured.wemix.wiz.com.ar/"
-          succes: `${URL}/`,
+          success: `${URL}/`,
           pending: `${URL}/`,
           failure: `${URL}/`,
         },

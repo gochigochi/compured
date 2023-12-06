@@ -1,7 +1,10 @@
-export default async function handler(req, res) {
+import nodemailer from "nodemailer"
 
+export default async function handler(req, res) {
+    
     const { query } = req
     const topic = query.topic || query.type
+    let orderData = {}
 
     try {
 
@@ -20,21 +23,98 @@ export default async function handler(req, res) {
 
             const data = await result.json()
 
-            console.log("DATA....", data)
-            // data.status /// puede ser "approved"
-            // data.description (nombre del producto)
-            // data.order.id
-            // payer.identification.number (dni del comprador)
-            // payer.first_name
-            // payer.last_name
-            // payer.email
-            // transaction_details.total_paid_amount
+            if (data.status !== "approved") {
+
+                res.status(500).send({ success: false, err: err })
+            }
+
+            orderData = {
+                status: data.status,
+                description: data.description, //product name
+                orderId: data.order.id,
+                payerId: data.payer.identification.number,
+                payerName: data.payer.first_name,
+                payerLastName: data.payer.last_name,
+                payerEmail: data.payer.email,
+                totalPaid: data.transaction_details.total_paid_amount
+            }
         }
 
-        res.status(200)
 
     } catch (err) {
-        console.log("ERROR...", err)
-        res.send(err)
+        res.status(500).send({ success: false, err: err })
     }
+
+    // SEND CONFIRMATION EMAILS
+    try {
+
+        const transporter = nodemailer.createTransport({
+            host: process.env.SMTP,
+            port: 465,
+            secure: true,
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASSWORD,
+            },
+        })
+
+        // TO COMPANY
+        await transporter.sendMail({
+            from: "info@compured.com.ar", // sender address
+            // to: "info@compured.com.ar", // list of receivers
+            to: "diegoeliseoiovane@gmail.com",
+            subject: `Confirmacion de compra de ${orderData.description}`, // Subject line
+            html: `<b>Compra</b>
+                        <br></br>
+                        <p>${orderData.status}</p>
+                        <br></br>
+                        <p>Producto</p>
+                        <p>${orderData.description}</p>
+                        <br></br>
+                        <p>Número de orden</p>
+                        <p>${orderData.orderId}</p>
+                        <br></br>
+                        <p>Detalles del comprador</p>
+                        <p>${orderData.payerName}</p>
+                        <br></br>
+                        <p>${orderData.payerLastName}</p>
+                        <br></br>
+                        <p>${orderData.payerEmail}</p>
+                        <br></br>
+                        <p>${orderData.totalPaid}</p>
+                        <br></br>
+                        <p>Total del pago</p>
+                        <p>${orderData.totalPaid}</p>
+                `,
+        })
+
+        // TO CLIENT
+        await transporter.sendMail({
+            from: "info@compured.com.ar", // sender address
+            to: orderData.payerEmail,
+            subject: `Confirmacion de compra de ${orderData.description}`, // Subject line
+            html: `<b>Compra</b>
+                        <br></br>
+                        <p>${orderData.status}</p>
+                        <br></br>
+                        <p>Producto</p>
+                        <p>${orderData.description}</p>
+                        <br></br>
+                        <p>Número de orden</p>
+                        <p>${orderData.orderId}</p>
+                        <br></br>
+                        <p>Total del pago</p>
+                        <p>${orderData.totalPaid}</p>
+                `,
+        })
+
+        res.status(200).json({ success: true })
+
+    } catch (err) {
+
+        res.status(500).send({ success: false, err: err })
+    }
+
+
+    res.status(200)
 }

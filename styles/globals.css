@@ -53,3 +53,9 @@ input, textarea, textarea::placeholder {
 textarea {
   resize: none;
 }
+
+#__next {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

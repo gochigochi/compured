@@ -3,6 +3,7 @@ import styled from "styled-components"
 export const ContainerFluid = styled.div`
     position: relative;
     padding: 30px 12px;
+    height: 100%;
     ${({bgcolor}) => bgcolor && `background-color: ${bgcolor}`}
 `
 
@@ -10,6 +11,7 @@ export const Inner = styled.div`
     max-width: var(--inner-max-width);
     margin: 0 auto;
     padding: 0 20px;
+    height: 100%;
 `
 
 export const PageTitle = styled.h1`
