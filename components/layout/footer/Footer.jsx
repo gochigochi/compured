@@ -1,10 +1,18 @@
 import { ContainerFluid, Inner } from "@/components/common_elements/CommonElements"
+import { Container, Text, SocialIcons } from "./Elements"
+import { FacebookSvg, IgSvg } from "@/components/svgs/Svgs"
 
 const Footer = () => {
   return (
-    <ContainerFluid bgcolor="#f4f4f4">
+    <ContainerFluid>
         <Inner>
-            Footer
+            <Container>
+              <Text>Copyright	&#169; Compured, 2023, Av. Arrayanes 282 - Local 2, Villa La Angostura</Text>
+              <SocialIcons>
+                <FacebookSvg width="24" height="24" color="var(--text-light)" />
+                <IgSvg width="24" height="24" color="var(--text-light)" />
+              </SocialIcons>
+            </Container>
         </Inner>
     </ContainerFluid>
   )
