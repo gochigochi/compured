@@ -7,18 +7,6 @@ import {
   Button,
 } from "./Elements"
 
-// const handleSearch = async (term) => {
-
-//   const response = await fetch("https://api-beta.saasargentina.com/v1/productos?callback=productoscallback&busqueda=Auriculares&datosextras=&desde=0&cantidad=100&mostrarimagenes=1&idrubro=0&orden=nombre")
-
-//   console.log(response)
-
-//   const json = await response.json()
-
-//   console.log(json)
-
-// }
-
 const Search = () => {
 
   const router = useRouter()
@@ -39,19 +27,16 @@ const Search = () => {
 
       router.push(`/productos/${sanitizedTerm}`, `/productos/search=${sanitizedTerm}`)
     }
-
   }
 
   return (
     <SearchContainer onSubmit={onSubmit}>
       <SearchInput type="text" name="term" onChange={(e) => term.current = e.target.value} />
       <Button type="submit">
-        <SearchSvg />
+        <SearchSvg width="24" height="24" color="var(--text-black)" />
       </Button>
     </SearchContainer>
   )
 }
 
 export default Search
-
-// https://api-beta.saasargentina.com/v1/productos?callback=productoscallback&busqueda=Auriculares&datosextras=&desde=0&cantidad=100&mostrarimagenes=1&idrubro=0&orden=nombre&iue=PuaNYqpDhRBJ7K80I8WC&S=68a4cf0ebec8403236a9d2d500ee1fc3&_=1700662451342

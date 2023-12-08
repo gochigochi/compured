@@ -1,26 +1,16 @@
-import Search from './search/Search'
-import DesktopMenu from './desktop_menu/DesktopMenu'
-import CartIcon from './cart_icon/CartIcon'
+import DesktopNav from './desktop_nav/DesktopNav'
 import {
-    CartContainer,
     Container,
     Inner,
-    Logo,
-    LogoContainer,
 } from './Elements'
+import MobileNav from './mobile_nav/MobileNav'
 
 const Nav = () => {
     return (
         <Container>
             <Inner>
-                <LogoContainer href="/">
-                    <Logo src="/assets/logo.png" alt="logo compured" fill priority />
-                </LogoContainer>
-                <DesktopMenu />
-                <Search />
-                <CartContainer href="/carrito">
-                    <CartIcon />
-                </CartContainer>
+                <DesktopNav />
+                <MobileNav />
             </Inner>
         </Container>
     )

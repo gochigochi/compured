@@ -29,6 +29,14 @@ export const PageTitle = styled.h1`
 
 export const SectionTitle = styled.h2`
     font-size: 2rem;
+
+    @media all and (max-width: 550px) {
+        font-size: 1.4rem;
+    }
 `
 
-export const SectionTitleSub = styled.p``
+export const SectionTitleSub = styled.p`
+    @media all and (max-width: 550px) {
+        font-size: .9rem;
+    }
+`

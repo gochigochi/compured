@@ -3,7 +3,7 @@ import '@/styles/globals.css'
 import Layout from "@/components/layout/Layout"
 import CategoriesContextProvider from "@/context/CategoriesContext"
 import CartContextProvider from "@/context/CartContext"
-import { ErrorBoundary } from "next/dist/client/components/error-boundary"
+import ErrorBoundary from "@/components/errors/ErrorBoundary"
 import { GeneralError } from "@/components/forms/Elements"
 
 const publicSans = Public_Sans({

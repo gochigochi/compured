@@ -13,6 +13,7 @@ export const Container = styled.div`
 export const Box = styled.div`
     position: relative;
     background-color: #fff;
+    // background-color: #1a202c;
     box-shadow: var(--light-shadow);
     border-radius: 8px;
     padding: 18px;

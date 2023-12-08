@@ -12,10 +12,6 @@ export const Inner = styled.div`
     max-width: 1500px;
     margin: 0 auto;
     padding: 0 12px;
-    display: flex;
-    justify-content: space-between;
-    display: grid;
-    grid-template-columns: minmax(100px, 150px) 1fr minmax(250px, 500px) 50px;
 `
 
 export const LogoContainer = styled(Link)`

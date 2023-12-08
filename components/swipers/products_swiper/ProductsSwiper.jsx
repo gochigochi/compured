@@ -9,6 +9,11 @@ import { SwiperContainer } from './Elements'
 import NavButtons from "../nav_buttons/NavButtons"
 
 const ProductsSwiper = ({ products }) => {
+
+  if (!products) {
+    return <p>...........</p>
+  }
+
   return (
     <SwiperContainer>
       <Swiper
@@ -31,7 +36,7 @@ const ProductsSwiper = ({ products }) => {
         className="mySwiper"
       >
         {
-          products.map(product => {
+          products?.map(product => {
             return (
               <SwiperSlide key={product.idproducto}>
                 <ProductCard product={product} style={{"height": "330px"}} />

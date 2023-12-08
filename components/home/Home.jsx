@@ -7,6 +7,7 @@ import { HomeContainer } from './Elements'
 import BannerCarousel from '../banner_carousel/BannerCarousel'
 import Featured from '../featured/Featured'
 import Services from './services/Services'
+import Categories from './categories/Categories'
 const DynClients = dynamic(() => import('./clients/Clients'))
 const DynContact = dynamic(() => import('./contact/Contact'))
 
@@ -23,10 +24,11 @@ const Home = ({ products, categs }) => {
             <HomeContainer>
                 <BannerCarousel />
                 <Featured products={products} />
-                <Services />
+                <Categories categs={categs} />
                 <div ref={clientsRef}></div>
-                { clientsInView ? <DynClients /> : null }
+                <Services />
                 <div ref={contactRef}></div>
+                { clientsInView ? <DynClients /> : null }
                 { contactInView ? <DynContact /> : null }
             </HomeContainer>
         </Inner>

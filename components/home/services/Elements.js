@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { motion } from "framer-motion"
 
-export const Container = styled.section`
+export const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -9,7 +9,7 @@ export const Container = styled.section`
 
     @media all and (max-width: 750px) {
         justify-content: center;
-        padding: 0;
+        padding: 25px 0;
     }
 `
 

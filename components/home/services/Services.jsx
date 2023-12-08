@@ -10,6 +10,7 @@ import {
     Text,
     BtnText,
 } from './Elements'
+import { SectionTitle } from '@/components/common_elements/CommonElements'
 
 const temp = [
     {
@@ -56,50 +57,53 @@ const temp = [
 
 const Services = () => {
     return (
-        <Container>
-            {
-                temp.map(item => {
-                    return (
-                        <Card
-                            variants={scaleOnView}
-                            initial="initial"
-                            whileInView="animate"
-                            viewport={{ once: true }}
-                        >
-                            <Image
-                                src={item.bg}
-                                alt=""
-                                fill
-                                style={{ "objectFit": "cover", "zIndex": "-1" }}
-                            />
-                            <Title>{item.title}</Title>
-                            <Text>{item.text}</Text>
-                            <div>
-                                <PrimaryButton>
-                                    {
-                                        item.isLink ?
-                                        <Link href={item.url} style={{"display": "flex", "alignItems": "center"}}
-                                        >
-                                            <PlusSvg width="15px" height="15px" color="#fff"/>
-                                            <BtnText>Ver más</BtnText>
-                                        </Link> :
-                                        <a 
-                                            href="https://api.whatsapp.com/send?phone=5492944154964&text=Hola"
-                                            rel="noopene noreferrer"
-                                            target="_blank"
-                                            style={{"display": "flex", "alignItems": "center"}}
-                                        >
-                                            <WhatsSvg width="12px" height="12px" color="#fff"/>
-                                            <BtnText>Contactanos</BtnText>
-                                        </a>
-                                    }
-                                </PrimaryButton>
-                            </div>
-                        </Card>
-                    )
-                })
-            }
-        </Container>
+        <section>
+            <SectionTitle>Servicios Compured</SectionTitle>
+            <Container>
+                {
+                    temp.map(item => {
+                        return (
+                            <Card
+                                variants={scaleOnView}
+                                initial="initial"
+                                whileInView="animate"
+                                viewport={{ once: true }}
+                            >
+                                <Image
+                                    src={item.bg}
+                                    alt=""
+                                    fill
+                                    style={{ "objectFit": "cover", "zIndex": "-1" }}
+                                />
+                                <Title>{item.title}</Title>
+                                <Text>{item.text}</Text>
+                                <div>
+                                    <PrimaryButton>
+                                        {
+                                            item.isLink ?
+                                            <Link href={item.url} style={{"display": "flex", "alignItems": "center"}}
+                                            >
+                                                <PlusSvg width="15px" height="15px" color="#fff"/>
+                                                <BtnText>Ver más</BtnText>
+                                            </Link> :
+                                            <a 
+                                                href="https://api.whatsapp.com/send?phone=5492944154964&text=Hola"
+                                                rel="noopene noreferrer"
+                                                target="_blank"
+                                                style={{"display": "flex", "alignItems": "center"}}
+                                            >
+                                                <WhatsSvg width="12px" height="12px" color="#fff"/>
+                                                <BtnText>Contactanos</BtnText>
+                                            </a>
+                                        }
+                                    </PrimaryButton>
+                                </div>
+                            </Card>
+                        )
+                    })
+                }
+            </Container>
+        </section>
     )
 }
 

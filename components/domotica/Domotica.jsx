@@ -1,14 +1,15 @@
+import withCategories from '@/hocs/withCategories'
 import Banner from '../banner/Banner'
 import { ContainerFluid, Inner } from '../common_elements/CommonElements'
 
-const Domotica = () => {
+const Domotica = ({ categs }) => {
   return (
     <ContainerFluid>
         <Inner>
-            <Banner />
+            <Banner src="/assets/banner-placeholder.png" />
         </Inner>
     </ContainerFluid>
   )
 }
 
-export default Domotica
+export default withCategories(Domotica)

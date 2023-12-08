@@ -15,12 +15,14 @@ import {
     SeeAll,
 } from "./Elements"
 
-const FlyoutMenu = ({ children }) => {
+const FlyoutMenu = ({ children, ...props }) => {
 
     const router = useRouter()
     const { categories } = useCategoriesContext()
     const [open, setOpen] = useState(false)
     const [subMenu, setSubMenu] = useState({ name: "", id: "", items: [] })
+
+    console.log(categories)
 
     useEffect(() => {
 
@@ -95,7 +97,9 @@ const FlyoutMenu = ({ children }) => {
 
     return (
         <Container>
-            <Button id="flyout-btn" onClick={() => setOpen(!open)}>{children}</Button>
+            <Button id="flyout-btn" onClick={() => setOpen(!open)} {...props}>
+                {children}
+            </Button>
             {
                 open ?
                     <MenuContainer id="container">

@@ -1,10 +1,10 @@
 import { Container } from "./Elements"
 import Image from 'next/image'
 
-const Banner = () => {
+const Banner = ({ src }) => {
   return (
     <Container>
-        <Image src="/assets/banner-placeholder.png" alt="" fill style={{"objectFit": "cover"}} />
+        <Image src={src} alt="" fill style={{"objectFit": "cover"}} />
     </Container>
   )
 }
