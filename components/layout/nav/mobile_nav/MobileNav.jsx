@@ -7,6 +7,27 @@ import { LogoContainer, Logo } from '../Elements'
 import { Nav, NavItem, NavItems } from './Elements'
 import { MenuSvg, SearchSvg } from '@/components/svgs/Svgs'
 
+const menuContent = [
+    {
+        id: 1,
+        title: "Categorías",
+        url: "/categorias",
+        link: true
+    }, 
+    {
+        id: 2,
+        title: "Servicios",
+        url: "#",
+        link: false
+    },
+    {
+        id: 3,
+        title: "Contacto",
+        url: "#",
+        link: false
+    },
+]
+
 const MobileNav = () => {
 
     const [openMenu, setOpenMenu] = useState(false)
@@ -15,7 +36,7 @@ const MobileNav = () => {
     return (
         <Nav>
             <LogoContainer href="/">
-                <Logo src="/assets/logo.png" alt="logo compured" fill priority />
+                <Logo src="https://drive.google.com/uc?export=view&id=1BLm0zCbENDbmXD4BNX7myU_eDjGXuMG8" alt="logo compured" fill priority />
             </LogoContainer>
             <NavItems>
                 <NavItem>
@@ -29,7 +50,7 @@ const MobileNav = () => {
                         {
                             openMenu ?
                             <FlyoutAltMenu.Menu action={() => setOpenMenu(!openMenu)}>
-                                Children
+                                <FlyoutAltMenu.List content={menuContent} />
                             </FlyoutAltMenu.Menu> : null
                         }
                     </FlyoutAltMenu>

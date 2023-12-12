@@ -23,7 +23,7 @@ const temp = [
         title: "Domótica",
         text: "Transforma tu hogar en un espacio inteligente, controlando luces, seguridad, climatización y más. Descubre el futuro de tu hogar hoy mismo",
         isLink: true,
-        url: "#",
+        url: "/domotica",
         bg: "https://drive.google.com/uc?export=view&id=1RWrmnIYXnjlELzKr-D1mtbhAFOugZtc0",
     },
     {

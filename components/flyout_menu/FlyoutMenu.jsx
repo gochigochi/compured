@@ -34,9 +34,15 @@ const FlyoutMenu = ({ children, ...props }) => {
             }
         }
 
-        if (open) window.addEventListener("click", clickHandler)
+        if (open) {
+            window.addEventListener("click", clickHandler)
+            document.documentElement.style.overflow = "hidden"
+        }
 
-        if (!open) window.removeEventListener("click", clickHandler)
+        if (!open) {
+            window.removeEventListener("click", clickHandler)
+            document.documentElement.style.overflow = ""
+        }
 
         return () => window.removeEventListener("click", clickHandler)
 

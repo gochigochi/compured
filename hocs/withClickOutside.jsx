@@ -11,8 +11,12 @@ const withClickOutside = (WrappedComponent) => {
         }
 
         window.addEventListener("click", handleClick)
+        document.documentElement.style.overflow = "hidden"
 
-        return () => window.removeEventListener("click", handleClick)
+        return () => {
+          window.removeEventListener("click", handleClick)
+          document.documentElement.style.overflow = ""
+        }
     })
 
     return <WrappedComponent { ...props} />

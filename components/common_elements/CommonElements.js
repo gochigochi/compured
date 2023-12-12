@@ -22,6 +22,12 @@ export const Inner = styled.div`
     }
 `
 
+export const PageContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+`
+
 export const PageTitle = styled.h1`
     font-size: 2.3rem;
     margin: 15px 0;

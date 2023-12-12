@@ -18,12 +18,15 @@ const ProductsSwiper = ({ products }) => {
     <SwiperContainer>
       <Swiper
         breakpoints={{
-          460: {
+          380: {
             slidesPerView: 2,
             spaceBetween: 20,
           },
-          768: {
+          600: {
             slidesPerView: 3,
+          },
+          860: {
+            slidesPerView: 4,
           },
           1024: {
             slidesPerView: 5,

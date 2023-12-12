@@ -40,8 +40,10 @@ const ProductDetail = ({ product, categs, featured }) => {
         <ContainerFluid bgcolor="#F9FAFB">
             <Inner>
                 <ProductMain>
-                    <ProductSwiper images={product.archivos} />
-                    <Details>
+                    <div>
+                        <ProductSwiper images={product.archivos} />
+                    </div>
+                    <div>
                         <Title>{product?.nombre}</Title>
                         <Price>${product?.preciofinal}</Price>
                         <Description>{product?.nombre}</Description>
@@ -59,7 +61,7 @@ const ProductDetail = ({ product, categs, featured }) => {
                         <Divider />
                         <ReturnTitle>Devoluciones</ReturnTitle>
                         <ReturnNote>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</ReturnNote>
-                    </Details>
+                    </div>
                 </ProductMain>
                 <ProductsSwiper products={featured} />
             </Inner>

@@ -54,7 +54,7 @@ const PaymentMethods = () => {
                         temp.map(el => {
                             return (
                                 <Row key={el.text}>
-                                    <Data>{el.text}</Data>
+                                    <Data className="title">{el.text}</Data>
                                     {
                                         el.logos.map(logo => {
                                             return (

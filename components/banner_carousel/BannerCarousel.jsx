@@ -18,10 +18,10 @@ const BannerCarousel = () => {
                 modules={[Autoplay, Pagination]}
                 className="mySwiper"
             >
-                <SwiperSlide><Img src="/assets/banner-placeholder.png" alt="" width={1920} height={400} priority /></SwiperSlide>
-                <SwiperSlide><Img src="/assets/banner-placeholder.png" alt="" width={1920} height={400} priority /></SwiperSlide>
-                <SwiperSlide><Img src="/assets/banner-placeholder.png" alt="" width={1920} height={400} priority /></SwiperSlide>
-                <SwiperSlide><Img src="/assets/banner-placeholder.png" alt="" width={1920} height={400} priority /></SwiperSlide>
+                <SwiperSlide><Img src="https://drive.google.com/uc?export=view&id=1mDw1YepwuSKyubLkSd40aiYvMUW0yGey" alt="" width={1920} height={400} priority /></SwiperSlide>
+                <SwiperSlide><Img src="https://drive.google.com/uc?export=view&id=1mDw1YepwuSKyubLkSd40aiYvMUW0yGey" alt="" width={1920} height={400} priority /></SwiperSlide>
+                <SwiperSlide><Img src="https://drive.google.com/uc?export=view&id=1mDw1YepwuSKyubLkSd40aiYvMUW0yGey" alt="" width={1920} height={400} priority /></SwiperSlide>
+                <SwiperSlide><Img src="https://drive.google.com/uc?export=view&id=1mDw1YepwuSKyubLkSd40aiYvMUW0yGey" alt="" width={1920} height={400} priority /></SwiperSlide>
             </Swiper>
         </Container>
     )

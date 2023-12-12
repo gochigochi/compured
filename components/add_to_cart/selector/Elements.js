@@ -6,6 +6,7 @@ export const SelectorContainer = styled.div`
     padding: var(--button-padding);
     margin-right: 15px;
     position: relative;
+    background-color: #fff;
 `
 
 export const SelectorEl = styled.select`

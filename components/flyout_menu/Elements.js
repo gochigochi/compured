@@ -16,7 +16,7 @@ export const MenuContainer = styled.div`
     padding: 25px;
     background-color: #fff;
     display: grid;
-    width: 100vw;
+    width: 85vw;
     max-width: 400px;
     max-height: 80vh;
     overflow-y: auto;

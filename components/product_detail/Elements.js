@@ -5,6 +5,15 @@ export const ProductMain = styled.article`
     grid-template-columns: 1fr 1fr;
     column-gap: 2rem;
     margin: 35px 0 85px 0;
+
+    @media all and (max-width: 1024px) {
+        grid-template-columns: 1fr;
+        margin: 0 auto;
+        max-width: 700px;
+        row-gap: 45px;
+        margin-bottom: 65px;
+        padding: 0 15px;
+    }
 `
 
 export const Details = styled.div``

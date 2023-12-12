@@ -28,7 +28,7 @@ const Cart = ({ categs }) => {
         <ContainerFluid>
             <Inner>
                 <EmptyCart>
-                    <Image src="/assets/empty-cart.png" alt="" width={200} height={200} style={{"objectFit": "contain"}} />
+                    <Image src="https://drive.google.com/uc?export=view&id=1dYIbSIrHWMJ0kbNGpDe_ZAtCczOzbI7x" alt="" width={200} height={200} style={{"objectFit": "contain"}} />
                     <p>Todavía no agregaste nada al carrito</p>
                     <Link href="/">
                         <PrimaryButton>Ir a la tienda</PrimaryButton>

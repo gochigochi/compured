@@ -12,12 +12,12 @@ export const Layer = styled.div`
 
 export const MenuContainer = styled.div`
     position: fixed;
-    top: 100px;
+    top: 85px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     display: grid;
     padding: 25px;
-    width: 95vw;
+    width: 85vw;
     max-width: 450px;
     max-height: 80vh;
     background-color: #fff;

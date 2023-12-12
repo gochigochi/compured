@@ -9,6 +9,7 @@ export const Container = styled.button`
     padding: 3px 3px 14px;
     box-shadow: var(--light-shadow);
     border: 1px solid rgba(25, 141, 179, 0.1);
+    background-color: #fff;
 `
 
 export const Top = styled.div`

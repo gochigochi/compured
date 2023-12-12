@@ -25,7 +25,7 @@ const ProductCard = ({ product, ...props }) => {
     <Container onClick={() => handleRouter(product.nombre, product.idproducto)} {...props} >
       <Top>
         <Img
-          src={!!product.imagen_url ? product.imagen_url : "/assets/placeholder-logo.png"}
+          src={!!product.imagen_url ? product.imagen_url : "https://drive.google.com/uc?export=view&id=18QHvosnLrPYvhNFd-acD__t5hLggVmg2"}
           alt={product.nombre}
           fill
         />

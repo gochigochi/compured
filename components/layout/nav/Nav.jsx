@@ -1,16 +1,17 @@
-import DesktopNav from './desktop_nav/DesktopNav'
+import dynamic from 'next/dynamic'
 import {
     Container,
     Inner,
 } from './Elements'
-import MobileNav from './mobile_nav/MobileNav'
+const DynDesktopNav = dynamic(() => import('./desktop_nav/DesktopNav'))
+const DynMobileNav = dynamic(() => import('./mobile_nav/MobileNav'))
 
 const Nav = () => {
     return (
         <Container>
             <Inner>
-                <DesktopNav />
-                <MobileNav />
+                <DynDesktopNav />
+                <DynMobileNav />
             </Inner>
         </Container>
     )
