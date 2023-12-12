@@ -4,13 +4,20 @@ import { useInView } from 'framer-motion'
 import withCategories from '@/hocs/withCategories'
 import Banner from '../banner/Banner'
 import { ContainerFluid, Inner, PageContainer } from '../common_elements/CommonElements'
-import TestimonialsSection from './testimonials_section/TestimonialsSection'
+import FeaturesSection from './features_section/FeaturesSection'
+const DynTestimonialsSection = dynamic(() => import('./testimonials_section/TestimonialsSection'))
 const DynContact = dynamic(() => import('../contact/Contact'))
+const DynProjectsSection = dynamic(() => import('./projects_section/ProjectsSection'))
 
 const Domotica = ({ categs }) => {
 
   const contactRef = useRef()
+  const testimonialsRef = useRef()
+  const projectsRef = useRef()
   const contactInView = useInView(contactRef, { once: true })
+  const testimonialsInView = useInView(testimonialsRef, { once: true })
+  const projectsInView = useInView(projectsRef, { once: true})
+
 
   return (
     <ContainerFluid>
@@ -23,8 +30,12 @@ const Domotica = ({ categs }) => {
               <Banner.Text>Mejora la eficiencia energética, la comodidad y la seguridad en los hogares, brindando una experiencia de vida más conectada y conveniente</Banner.Text>
             </Banner.Content>
           </Banner>
+          <div ref={projectsRef}></div>
+          <FeaturesSection />
+          <div ref={testimonialsRef}></div>
+          { projectsInView ? <DynProjectsSection /> : null }
           <div ref={contactRef}></div>
-          <TestimonialsSection />
+          { testimonialsInView ? <DynTestimonialsSection /> : null }
           { contactInView ? <DynContact /> : null }
         </PageContainer>
       </Inner>

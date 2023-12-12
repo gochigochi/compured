@@ -7,6 +7,7 @@ export const ContactSection = styled.section`
     border-radius: 12px;
     box-shadow: var(--light-shadow);
     padding: 12px;
+    margin: 40px 0;
 
     @media all and (max-width: 860px) {
         display: block;
