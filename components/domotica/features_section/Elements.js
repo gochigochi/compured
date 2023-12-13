@@ -4,6 +4,10 @@ export const Container = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     gap: 15px;
+
+    @media all and (max-width: 500px) {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
 `
 
 export const Card = styled.div`
@@ -15,10 +19,11 @@ export const Card = styled.div`
     box-shadow: var(--light-shadow);
     display: grid;
 
-    //The only one positioned
-    &:hover .img-container {
-        top: -5px;
-        right: -110px;
+    @media all and (min-width: 450px) {
+        &:hover .img-container {
+            top: -5px;
+            right: -110px;
+        }
     }
 `
 
@@ -29,6 +34,10 @@ export const Content = styled.div`
         font-weight: bold;
         font-size: 1.8rem;
         margin-bottom: 15px;
+
+        @media all and (max-width: 550px) {
+            font-size: 1.4rem;
+        }
     }
 
     h3, p {
@@ -42,6 +51,11 @@ export const ImageContainer = styled.div`
     top: 5px;
     right: -120px;
     transition: all .2s ease-in-out;
+
+    @media all and (max-width: 450px) {
+        top: 35px;
+        right: -180px;
+    }
 `
 
 export const Img = styled.div`

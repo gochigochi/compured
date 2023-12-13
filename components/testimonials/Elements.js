@@ -1,13 +1,14 @@
 import styled from "styled-components"
+import { motion } from "framer-motion"
 
-export const Grid = styled.div`
+export const Grid = styled(motion.div)`
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     gap: 15px;
 `
 
-export const Card = styled.div`
+export const Card = styled(motion.div)`
     padding: 25px;
     background-color: var(--alt-soft-bg);
     display: flex;

@@ -1,5 +1,18 @@
-const Title = ({ children }) => <h1 style={{ "fontSize": "2.5rem", "color": "#fff" }}>
-    {children}
-</h1>
+import styled from "styled-components"
+
+const Element = styled.h1`
+    font-size: 2.5rem;
+    color: #fff;
+
+    @media all and (max-width: 550px) {
+        font-size: 2rem;
+    }
+
+    @media all and (max-width: 450px) {
+        font-size: 1.85rem;
+    }
+`
+
+const Title = ({ children }) => <Element>{children}</Element>
 
 export default Title

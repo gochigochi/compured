@@ -1,4 +1,4 @@
-import Scalable from '@/components/scalable/Scalable'
+import Scalable from '@/components/animations/Scalable'
 import ReactPlayer from 'react-player'
 import { VideoContainer } from './Elements'
 import { SectionTitle } from '@/components/common_elements/CommonElements'

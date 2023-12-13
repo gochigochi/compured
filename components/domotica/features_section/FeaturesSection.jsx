@@ -13,29 +13,25 @@ const temp = [
         id: 1,
         title: "Automatización de iluminación",
         text: "Ofrecemos soluciones de domótica que permiten controlar y programar la iluminación de manera automática. Ajusta la intensidad de la luz, crea escenas personalizadas y controla las luces desde dispositivos móviles.",
-        // src: "https://drive.google.com/uc?export=view&id=15v7PBO5yrAglF0t16xqESutYQWnWWoFJ",
-        src: "/assets/app-lights.png",
+        src: "https://drive.google.com/uc?export=view&id=1efwB1ah9vhoac0qimrvfsa6s1Mua0Uxk",
     },
     {
         id: 2,
         title: "Sistemas de seguridad inteligente",
         text: "Sistemas de seguridad inteligente que se integran con la domótica: incluyen cámaras de seguridad, sensores de movimiento y alarmas, que pueden ser monitoreados y controlados a distancia para proteger tu hogar o negocio.",
-        // src: "https://drive.google.com/uc?export=view&id=15v7PBO5yrAglF0t16xqESutYQWnWWoFJ",
-        src: "/assets/app-lights.png",
+        src: "https://drive.google.com/uc?export=view&id=1G_qlWD3K7grhAAeA4JqHYc1g1gfyGgOj",
     },
     {
         id: 3,
         title: "Control de temperatura",
         text: "Soluciones de domótica para el control inteligente de la temperatura en el hogar o en el lugar de trabajo. Permite ajustar la calefacción, el aire acondicionado o los sistemas de ventilación según las preferencias y horarios establecidos.",
-        // src: "https://drive.google.com/uc?export=view&id=15v7PBO5yrAglF0t16xqESutYQWnWWoFJ",
-        src: "/assets/app-lights.png",
+        src: "https://drive.google.com/uc?export=view&id=1hE8V4xwwg4zhju1D1ueA2PYvU0knfW2P",
     },
     {
         id: 4,
         title: "Gestión de energía sostenible",
         text: "Nos enfocamos en soluciones de domótica que promueven la eficiencia energética y la gestión sostenible. Esto incluye el monitoreo y control del consumo energético.",
-        // src: "https://drive.google.com/uc?export=view&id=15v7PBO5yrAglF0t16xqESutYQWnWWoFJ",
-        src: "/assets/app-lights.png",
+        src: "https://drive.google.com/uc?export=view&id=1Hs9uEEIl95tv7L-WzaIocOxTjCzmnf25",
     },
 ]
 

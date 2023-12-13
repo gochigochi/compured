@@ -21,7 +21,7 @@ const temp = [
         id: 3,
         name: "Sundar Pichai",
         prof: "CEO de Google",
-        text: "La domótica ofrece un gran potencial para transformar nuestros hogares en espacios más eficientes y personalizados. Al invertir en domótica, apostamos por un estilo de vida más conveniente adaptable a nuestras necesidades",
+        text: "La domótica permite transformar nuestros hogares en espacios más eficientes y personalizados. Al invertir en domótica, apostamos por un estilo de vida más conveniente adaptable a nuestras necesidades",
         src: "https://drive.google.com/uc?export=view&id=1K7dmyu-H6L1qCih3QMxJvUgt3IeN3ZZK",
     },
 ]
