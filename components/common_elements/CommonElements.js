@@ -5,10 +5,6 @@ export const ContainerFluid = styled.div`
     padding: 30px 12px;
     height: 100%;
     background-color: ${({bgcolor}) => bgcolor && bgcolor};
-
-    @media all and (max-width: 650px) {
-        padding: 8px 10px;
-    }
 `
 
 export const Inner = styled.div`
