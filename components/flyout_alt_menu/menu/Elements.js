@@ -8,6 +8,7 @@ export const Layer = styled.div`
     height: 100%;
     backdrop-filter: blur(1px);
     background-color: rgba(0, 0, 0, 0.05);
+    z-index: 10;
 `
 
 export const MenuContainer = styled.div`
@@ -19,7 +20,7 @@ export const MenuContainer = styled.div`
     padding: 25px;
     width: 85vw;
     max-width: 450px;
-    max-height: 80vh;
+    max-height: 85vh;
     background-color: #fff;
     box-shadow: 0px 15px 25px 0px rgba(146, 157, 161, 0.6);
     border-radius: 12px;

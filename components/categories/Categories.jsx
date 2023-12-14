@@ -13,14 +13,11 @@ const Categories = ({ categories }) => {
         router.push(`/productos/${id}`, `/productos/id=${id}&${url}`)
     }
 
-    console.log(categories)
-
     return (
         <ContainerFluid bgcolor="#f0f0f0" style={{ "boxShadow": "var(--light-shadow)" }}>
             <Inner>
                 <List>
                     <SectionTitle>Categorías</SectionTitle>
-                    
                         {
                             categories.map(category => {
                                 return (

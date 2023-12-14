@@ -8,23 +8,23 @@ import Sort from './sort/Sort'
 const ProductsList = ({ products, categs }) => {
 
     const [sorted, setSorted] = useState(products)
-    const [direction, setDirection] = useState("")
+    const [direction, setDirection] = useState(null)
 
     useEffect(() => {
 
+        const productsCopy = [...products]
+
         switch (direction) {
             case "up":
-                setSorted(products.sort((a, b) => Number(a.preciofinal) - Number(b.preciofinal)))
+                setSorted(productsCopy.sort((a, b) => Number(a.preciofinal) - Number(b.preciofinal)))
                 break
             case "down":
-                setSorted(products.sort((a, b) => Number(b.preciofinal) - Number(a.preciofinal)))
+                setSorted(productsCopy.sort((a, b) => Number(b.preciofinal) - Number(a.preciofinal)))
                 break
             default:
-                setSorted(products.sort())
+                setSorted(productsCopy.sort())
         }
 
-        // console.log(products)
-        // console.log(sorted)
     }, [direction])
 
     if (products.length === 0) {
@@ -38,7 +38,7 @@ const ProductsList = ({ products, categs }) => {
     return (
         <ContainerFluid>
             <Inner>
-                <Sort setDirection={setDirection} />
+                <Sort setDirection={setDirection} categories={categs} />
                 <List>
                     {
                         sorted?.map(product => {

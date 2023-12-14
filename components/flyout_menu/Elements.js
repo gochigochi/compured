@@ -7,18 +7,36 @@ export const Container = styled.div`
 export const Button = styled.button`
     position: relative;
     cursor: pointer;
+
+    svg {
+        pointer-events: none;
+    }
 `
 
 export const MenuContainer = styled.div`
+    ${({ position }) => {
+        if (position === "center") {
+            return `
+            top: 50px;
+            left: -137px;
+            max-height: 85vh;       
+            `
+        }
+
+        if (position === "left") {
+            return `
+            top: 32px;
+            left: 0px;     
+            max-height: 65vh;     
+            `
+        }
+    }}
     position: absolute;
-    top: 50px;
-    left: -137px;
     padding: 25px;
     background-color: #fff;
     display: grid;
     width: 85vw;
     max-width: 400px;
-    max-height: 80vh;
     overflow-y: auto;
     overflow-behaviour: contain;
     box-shadow: var(--light-shadow);
@@ -27,7 +45,7 @@ export const MenuContainer = styled.div`
 
     @media all and (max-width: 650px) {
         position: fixed;
-        top: 50%;
+        top: 53%;
         left: 50%;
         transform: translate(-50%, -50%);
         box-shadow: 0px 15px 25px 0px rgba(146, 157, 161, 0.6);

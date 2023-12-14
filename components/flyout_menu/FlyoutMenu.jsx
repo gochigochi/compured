@@ -15,16 +15,16 @@ import {
     SeeAll,
 } from "./Elements"
 
-const FlyoutMenu = ({ children, ...props }) => {
+const FlyoutMenu = ({ children, position = "center", ...props }) => {
 
     const router = useRouter()
     const { categories } = useCategoriesContext()
     const [open, setOpen] = useState(false)
     const [subMenu, setSubMenu] = useState({ name: "", id: "", items: [] })
 
-    console.log(categories)
-
     useEffect(() => {
+
+        const scrollWidth = window.innerWidth - document.body.offsetWidth
 
         const clickHandler = (e) => {
 
@@ -37,11 +37,13 @@ const FlyoutMenu = ({ children, ...props }) => {
         if (open) {
             window.addEventListener("click", clickHandler)
             document.documentElement.style.overflow = "hidden"
+            document.documentElement.style.paddingRight = `${scrollWidth}px`
         }
 
         if (!open) {
             window.removeEventListener("click", clickHandler)
             document.documentElement.style.overflow = ""
+            document.documentElement.style.paddingRight = ""
         }
 
         return () => window.removeEventListener("click", clickHandler)
@@ -108,7 +110,7 @@ const FlyoutMenu = ({ children, ...props }) => {
             </Button>
             {
                 open ?
-                    <MenuContainer id="container">
+                    <MenuContainer id="container" position={position}>
                         {subMenu?.items?.length > 0 ? <SubCategories /> : <Categories />}
                     </MenuContainer> :
                     null

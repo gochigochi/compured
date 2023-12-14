@@ -3,6 +3,10 @@ import { El } from "./Elements"
 
 const List = ({ content }) => {
 
+    const handleClick = () => {
+
+    }
+
     return (
         <ul>
             {

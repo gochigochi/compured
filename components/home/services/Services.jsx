@@ -57,7 +57,7 @@ const temp = [
 
 const Services = () => {
     return (
-        <section>
+        <section id="servicios">
             <SectionTitle>Servicios Compured</SectionTitle>
             <Container>
                 {

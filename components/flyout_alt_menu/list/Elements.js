@@ -6,4 +6,10 @@ export const El = styled.li`
         border-bottom: 1px solid var(--soft-gray);
         display: block;
     }
+
+    &:last-child {
+        a {
+            border: none;
+        }
+    }
 `

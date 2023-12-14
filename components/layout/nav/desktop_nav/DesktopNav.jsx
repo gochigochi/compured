@@ -5,6 +5,7 @@ import Search from "../search/Search"
 import { Nav } from "./Elements"
 
 const DesktopNav = () => {
+
     return (
         <Nav>
             <LogoContainer href="/">

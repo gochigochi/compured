@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useRouter } from "next/router"
 import Link from "next/link"
 import FlyoutAltMenu from '@/components/flyout_alt_menu/FlyoutAltMenu'
 import Search from "../search/Search"
@@ -7,7 +8,7 @@ import { LogoContainer, Logo } from '../Elements'
 import { Nav, NavItem, NavItems } from './Elements'
 import { MenuSvg, SearchSvg } from '@/components/svgs/Svgs'
 
-const menuContent = [
+const menuContentHome = [
     {
         id: 1,
         title: "Categorías",
@@ -17,21 +18,38 @@ const menuContent = [
     {
         id: 2,
         title: "Servicios",
-        url: "#",
+        url: "#servicios",
         link: false
     },
     {
         id: 3,
         title: "Contacto",
-        url: "#",
+        url: "#contacto",
         link: false
     },
+]
+
+const menuContentAlt = [
+    {
+        id: 1,
+        title: "Categorías",
+        url: "/categorias",
+        link: true
+    }
 ]
 
 const MobileNav = () => {
 
     const [openMenu, setOpenMenu] = useState(false)
     const [openSearch, setOpenSearch] = useState(false)
+    const { pathname } = useRouter()
+
+    const menuContent = pathname === "/" ? menuContentHome : menuContentAlt
+
+    useEffect(() => {
+        openMenu && setOpenMenu(false)
+        openSearch && setOpenSearch(false)
+    }, [pathname])
 
     return (
         <Nav>

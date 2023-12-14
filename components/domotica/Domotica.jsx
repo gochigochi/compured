@@ -20,7 +20,6 @@ const Domotica = ({ categs }) => {
   const testimonialsInView = useInView(testimonialsRef, { once: true })
   const projectsInView = useInView(projectsRef, { once: true})
 
-
   return (
     <ContainerFluid>
       <Inner>

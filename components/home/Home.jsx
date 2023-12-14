@@ -29,6 +29,7 @@ const Home = ({ products, categs }) => {
                 <div ref={contactRef}></div>
                 { clientsInView ? <DynClients /> : null }
                 { contactInView ? <DynContact /> : null }
+                <div id="contacto"></div>
             </PageContainer>
         </Inner>
     </ContainerFluid>

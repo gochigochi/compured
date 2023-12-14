@@ -29,6 +29,10 @@ export const Grid = styled.div`
 export const ButtonContainer = styled.div`
     margin-left: 25px;
 
+    a {
+        color: #fff;
+    }
+
     @media all and (max-width: 460px) {
         margin-left: 7px;
     }
