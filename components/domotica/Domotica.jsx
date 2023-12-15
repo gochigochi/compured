@@ -18,14 +18,17 @@ const Domotica = ({ categs }) => {
   const projectsRef = useRef()
   const contactInView = useInView(contactRef, { once: true })
   const testimonialsInView = useInView(testimonialsRef, { once: true })
-  const projectsInView = useInView(projectsRef, { once: true})
+  const projectsInView = useInView(projectsRef, { once: true })
 
   return (
     <ContainerFluid>
       <Inner>
         <PageContainer>
           <PopIn>
-            <Banner src="https://drive.google.com/uc?export=view&id=1mDw1YepwuSKyubLkSd40aiYvMUW0yGey">
+            <Banner
+              mobileSrc="https://drive.google.com/uc?export=view&id=1H9enCaOdWNduTygI4WrHaI1k0wPBtJaX"
+              desktopSrc="https://drive.google.com/uc?export=view&id=1T-3gk-cd4XtozmLc3UPM6UOU_KepJGpO"
+            >
               <Banner.Content>
                 <Banner.SubTitle>Domótica</Banner.SubTitle>
                 <Banner.Title>Transforma tu hogar en un espacio inteligente y sostenible</Banner.Title>
@@ -37,10 +40,10 @@ const Domotica = ({ categs }) => {
           <div ref={projectsRef}></div>
           <BenefitsSection />
           <div ref={testimonialsRef}></div>
-          { projectsInView ? <DynProjectsSection /> : null }
+          {projectsInView ? <DynProjectsSection /> : null}
           <div ref={contactRef}></div>
-          { testimonialsInView ? <DynTestimonialsSection /> : null }
-          { contactInView ? <DynContact /> : null }
+          {testimonialsInView ? <DynTestimonialsSection /> : null}
+          {contactInView ? <DynContact /> : null}
         </PageContainer>
       </Inner>
     </ContainerFluid>

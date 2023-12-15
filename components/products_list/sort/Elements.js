@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const Container = styled.div`
     display: flex;
     justify-content: space-between;
-    background-color: var(--gray-bg);
+    background-color: #f9f9f9;
     margin: 0 0 30px 0;
     border-radius: 500px;
     width: 100%;
