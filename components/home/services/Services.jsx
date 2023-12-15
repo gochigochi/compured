@@ -43,7 +43,7 @@ const temp = [
         title: "Franquicias",
         text: "Tecnología y Sustentabilidad son los componentes con mayor crecimiento a nivel mundial. CompuRed cuenta con ambos. ¿Querés conocer nuestro plan de expansión?",
         isLink: true,
-        url: "#",
+        url: "/franquicias",
         bg: "https://drive.google.com/uc?export=view&id=1T2RFBAJVUhqfZBaRg04tWWRl5uu1Oq5T",
     },
     {

@@ -2,10 +2,9 @@ import dynamic from 'next/dynamic'
 import { useRef } from 'react'
 import { useInView } from 'framer-motion'
 import withCategories from '@/hocs/withCategories'
-import Banner from '../banner/Banner'
 import { ContainerFluid, Inner, PageContainer } from '../common_elements/CommonElements'
+import Hero from './hero/Hero'
 import FeaturesSection from './features_section/FeaturesSection'
-import PopIn from '../animations/PopIn'
 import BenefitsSection from './benefits_section/BenefitsSection'
 const DynTestimonialsSection = dynamic(() => import('./testimonials_section/TestimonialsSection'))
 const DynContact = dynamic(() => import('../contact/Contact'))
@@ -24,18 +23,10 @@ const Domotica = ({ categs }) => {
     <ContainerFluid>
       <Inner>
         <PageContainer>
-          <PopIn>
-            <Banner
-              mobileSrc="https://drive.google.com/uc?export=view&id=1H9enCaOdWNduTygI4WrHaI1k0wPBtJaX"
-              desktopSrc="https://drive.google.com/uc?export=view&id=1T-3gk-cd4XtozmLc3UPM6UOU_KepJGpO"
-            >
-              <Banner.Content>
-                <Banner.SubTitle>Domótica</Banner.SubTitle>
-                <Banner.Title>Transforma tu hogar en un espacio inteligente y sostenible</Banner.Title>
-                <Banner.Text>Mejora la eficiencia energética, la comodidad y la seguridad en los hogares, brindando una experiencia de vida más conectada y conveniente</Banner.Text>
-              </Banner.Content>
-            </Banner>
-          </PopIn>
+          <Hero
+            mobileSrc="https://drive.google.com/uc?export=view&id=1H9enCaOdWNduTygI4WrHaI1k0wPBtJaX"
+            desktopSrc="https://drive.google.com/uc?export=view&id=1T-3gk-cd4XtozmLc3UPM6UOU_KepJGpO"
+          />
           <FeaturesSection />
           <div ref={projectsRef}></div>
           <BenefitsSection />
