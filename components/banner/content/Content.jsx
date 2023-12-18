@@ -1,5 +1,5 @@
 import { Container } from './Elements'
 
-const Content = ({children}) => <Container>{children}</Container>
+const Content = ({children, ...props}) => <Container {...props}>{children}</Container>
 
 export default Content

@@ -7,5 +7,6 @@ export const Container = styled.div`
     margin: 0 auto;
     border-radius: 30px;
     overflow: hidden;
+    background-color: var(--alt-soft-bg)
 `
 

@@ -1,3 +1,3 @@
-const Text = ({children}) => <p style={{"color": "#fff", "lineHeight": "1.4"}}>{children}</p>
+const Text = ({children, ...props}) => <p style={{"color": "#fff", "lineHeight": "1.4"}} {...props}>{children}</p>
 
 export default Text

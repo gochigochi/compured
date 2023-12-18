@@ -13,6 +13,6 @@ const Element = styled.h1`
     }
 `
 
-const Title = ({ children }) => <Element>{children}</Element>
+const Title = ({ children, ...props }) => <Element {...props} >{children}</Element>
 
 export default Title

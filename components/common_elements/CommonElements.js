@@ -42,3 +42,13 @@ export const SectionTitleSub = styled.p`
         font-size: .9rem;
     }
 `
+
+export const SectionContainer = styled.div`
+    max-width: var(--inner-max-width);
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(102deg, rgba(0, 112, 149, 0.03) 32.91%, rgba(192, 100, 239, 0.03) 55.44%);
+`

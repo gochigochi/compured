@@ -5,7 +5,7 @@ const PopIn = ({children}) => {
     <motion.div
         initial={{opacity: 0, scale: .8}}
         whileInView={{opacity: 1, scale: 1}}
-        viewport={{once: true, amount: .3}}
+        viewport={{once: true, amount: .7}}
     >
         {children}
     </motion.div>
