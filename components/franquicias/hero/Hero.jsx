@@ -20,7 +20,7 @@ const Hero = ({ mobileSrc, desktopSrc }) => {
                 <FloatingImgContainer>
                     <FloatingImgInner>
                         <Image
-                            src="/assets/phone.png"
+                            src="https://drive.google.com/uc?export=view&id=1pOjMpynB49injQ4gAY73sLS6KoESB17Q"
                             alt=""
                             style={{"objectFit": "contain"}}
                             fill

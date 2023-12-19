@@ -1,11 +1,10 @@
+import Dashboard from "@/components/admin/dashboard/Dashboard"
 
 const DashboardPage = ({ data }) => {
 
     console.log(data)
 
-    return (
-        <div>DashboardPage</div>
-    )
+    return <Dashboard />
 }
 
 export default DashboardPage

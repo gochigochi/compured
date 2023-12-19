@@ -16,7 +16,7 @@ const TextSection = () => {
                 </Left>
                 <Right>
                     <ImageContainer>
-                        <Image src="/assets/banner-placeholder.png" alt="" fill />
+                        <Image src="https://drive.google.com/uc?export=view&id=1pLHWlLYGyQqJJ4AhD-r0t9bW1rTQrEYl" alt="" fill />
                     </ImageContainer>
                 </Right>
             </Inner>
