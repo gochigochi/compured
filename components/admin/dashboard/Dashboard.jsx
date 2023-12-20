@@ -5,10 +5,15 @@ import { ContainerFluid, Inner, PageContainer, SectionTitle } from "@/components
 import { ButtonsContainer, Header } from "./Elements"
 import { DesktopSvg, MobileSvg } from "@/components/svgs/Svgs"
 
+const test = {
+    desktop: ["/assets/banner-placeholder.png","/assets/banner-placeholder.png","/assets/banner-placeholder.png",],
+    mobile: ["/assets/mobile-banner-placeholder.png","/assets/mobile-banner-placeholder.png","/assets/mobile-banner-placeholder.png",],
+}
 
 const Dashboard = () => {
 
     const [view, setView] = useState("desktop")
+    const [banners, setBanners] = useState(test)
 
     return (
         <ContainerFluid>
@@ -16,7 +21,7 @@ const Dashboard = () => {
                 <PageContainer>
                     <section>
                         <Header>
-                            <SectionTitle style={{"marginBottom": ".5rem"}}>Banner Desktop</SectionTitle>
+                            <SectionTitle>Banner Desktop</SectionTitle>
                             <ButtonsContainer>
                                 <button onClick={() => setView("desktop")}>
                                     <DesktopSvg width={24} height={24} />
@@ -28,7 +33,9 @@ const Dashboard = () => {
                         </Header>
                         <FileInput view={view} />
                     </section>
-                    <FilesGallery />
+                    <section>
+                        <FilesGallery banners={banners} view={view} />
+                    </section>
                 </PageContainer>
             </Inner>
         </ContainerFluid>

@@ -1,11 +1,6 @@
 import Dashboard from "@/components/admin/dashboard/Dashboard"
 
-const DashboardPage = ({ data }) => {
-
-    console.log(data)
-
-    return <Dashboard />
-}
+const DashboardPage = () => <Dashboard />
 
 export default DashboardPage
 
@@ -15,17 +10,14 @@ export async function getServerSideProps(context) {
     
     if (!isAuth) {
         return {
-            props: {
-                data: null,
-            }
+            redirect: {
+                destination: "/",
+                permanent: false,
+              },
+              props: {},
         }
     }
-
-    // MYSQL CALL
-
     return { 
-        props: {
-            data: [],
-        }
+        props: {}
     }
 }

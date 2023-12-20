@@ -8,7 +8,7 @@ export const FileUploadContainer = styled.section`
     overflow: hidden;
     height: auto;
     width: ${({view}) => view === "desktop" ? "100%" : "50%"};
-    aspect-ratio: ${({view}) => view === "desktop" ? "30/9" : "3/4"};
+    aspect-ratio: ${({view}) => view === "desktop" ? "30/9" : "4/3"};
     margin: 0 auto;
     display: flex;
     flex-direction: column;
