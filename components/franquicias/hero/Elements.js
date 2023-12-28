@@ -18,6 +18,7 @@ export const FloatingImgContainer = styled.div`
     width: 320px;
     height: 320px;
     animation: ${float} 1.7s cubic-bezier(0.59, 0.01, 0.29, 0.99) 2s infinite alternate;
+    z-index: 2;
 
     @media all and (max-width: 650px) {
         display: none;

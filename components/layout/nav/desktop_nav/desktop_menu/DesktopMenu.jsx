@@ -9,6 +9,7 @@ const links = [
   { id: 1, title: "Home", url: "/", link: true },
   { id: 2, title: "Domotica", url: "/domotica", link: true },
   { id: 3, title: "Franquicias", url: "/franquicias", link: true },
+  { id: 3, title: "Seguridad", url: "/camaras", link: true },
 ]
 
 const DesktopMenu = () => {

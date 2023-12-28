@@ -30,7 +30,7 @@ const temp = [
         title: "Cámaras de seguridad",
         text: "Protege lo que más quieres con nuestras cámaras de seguridad. Mantén tu hogar o negocio seguro las 24 horas del día. Contamos con instalación profesional y equipos de alta calidad.",
         isLink: true,
-        url: "#",
+        url: "/camaras",
         bg: "https://drive.google.com/uc?export=view&id=1mKJ2PtGtUsBd1w7yPJv6szaLBImfQxpD",
     },
     {
@@ -50,7 +50,7 @@ const temp = [
         title: "Ecommerce",
         text: "Conocé nuestros productos en nuestro comercio online",
         isLink: true,
-        url: "#",
+        url: "/categorias",
         bg: "https://drive.google.com/uc?export=view&id=1T2RFBAJVUhqfZBaRg04tWWRl5uu1Oq5T",
     },
 ]
@@ -78,13 +78,14 @@ const Services = () => {
                                 <Title>{item.title}</Title>
                                 <Text>{item.text}</Text>
                                 <div>
-                                    <PrimaryButton>
                                         {
                                             item.isLink ?
                                             <Link href={item.url} style={{"display": "flex", "alignItems": "center"}}
                                             >
-                                                <PlusSvg width="15px" height="15px" color="#fff"/>
-                                                <BtnText>Ver más</BtnText>
+                                                <PrimaryButton>
+                                                    <PlusSvg width="15px" height="15px" color="#fff"/>
+                                                    <BtnText>Ver más</BtnText>
+                                                </PrimaryButton>
                                             </Link> :
                                             <a 
                                                 href="https://api.whatsapp.com/send?phone=5492944154964&text=Hola"
@@ -92,11 +93,12 @@ const Services = () => {
                                                 target="_blank"
                                                 style={{"display": "flex", "alignItems": "center"}}
                                             >
-                                                <WhatsSvg width="12px" height="12px" color="#fff"/>
-                                                <BtnText>Contactanos</BtnText>
+                                                <PrimaryButton>
+                                                    <WhatsSvg width="12px" height="12px" color="#fff"/>
+                                                    <BtnText>Contactanos</BtnText>
+                                                </PrimaryButton>
                                             </a>
                                         }
-                                    </PrimaryButton>
                                 </div>
                             </Card>
                         )

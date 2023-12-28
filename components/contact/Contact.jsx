@@ -24,7 +24,7 @@ const Contact = () => {
                     <Directions>
                         <Item>
                             <PhoneSvg />
-                            <Text>(294)-4495226</Text>
+                            <Text>+54 9 2944 15-4964</Text>
                         </Item>
                         <Item>
                             <MailSvg />
@@ -32,7 +32,7 @@ const Contact = () => {
                         </Item>
                         <Item>
                             <LocationSvg />
-                            <Text>Av. Arrayanes 282 - Local 2, Villa La Angostura</Text>
+                            <Text>Av. Arrayanes 282 - Local 2, Villa La Angostura, Neuquén</Text>
                         </Item>
                     </Directions>
                     <Map />

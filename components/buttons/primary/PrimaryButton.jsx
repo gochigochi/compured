@@ -9,8 +9,8 @@ const Button = styled.button`
     transition: all .2s;
     min-height: 20px;
     min-width: 60px;
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
 
     &:hover {
         ${({dis}) => !dis && "opacity: .8;"}
