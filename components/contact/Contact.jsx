@@ -1,4 +1,5 @@
 import Map from "@/components/map/Map"
+import { useRouter } from "next/router"
 import ContactForm from "@/components/forms/contact_form/ContactForm"
 import {
     ContactSection,
@@ -13,6 +14,9 @@ import { SectionTitle } from "@/components/common_elements/CommonElements"
 import { LocationSvg, MailSvg, PhoneSvg } from "@/components/svgs/Svgs"
 
 const Contact = () => {
+
+    const { pathname } = useRouter()
+
     return (
         <ContactSection>
             <FormContainer>
@@ -24,7 +28,13 @@ const Contact = () => {
                     <Directions>
                         <Item>
                             <PhoneSvg />
-                            <Text>+54 9 2944 15-4964</Text>
+                            <Text>
+                                {
+                                    pathname === "/franquicias" ?
+                                    "+54 9 2944 24-7376" :
+                                    "+54 9 2944 15-4964"
+                                }
+                            </Text>
                         </Item>
                         <Item>
                             <MailSvg />

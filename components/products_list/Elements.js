@@ -6,6 +6,11 @@ export const List = styled.section`
     margin: 5px 0;
     gap: 25px;
     min-height: 500px;
+
+    @media all and (max-width: 450px) {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 5px;
+    }
 `
 
 export const NoProducts = styled.div`

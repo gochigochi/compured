@@ -5,7 +5,7 @@ const Item = ({ children, id, ...props }) => {
         <>
             <input type="radio" name="accordion" id={id} />
             <div className="box">
-                <label class="box-close" for="acc-close"></label>
+                <label class="box-close" htmlFor="acc-close"></label>
                 {children}
             </div>
         </>

@@ -31,7 +31,7 @@ const Testimonials = () => {
                         return(
                             <PopIn>
                                 <Card key={item.id}>
-                                    <Image src="/assets/quotes.png" alt="" width={35} height={35} />
+                                    <Image src="https://drive.google.com/uc?export=view&id=1jnnCvhTlfTgKDSdVTXz9qcybPXEQgJA9" alt="" width={35} height={35} />
                                     <p>{item.text}</p>
                                     <Author><p>{item.name}</p></Author>
                                 </Card>

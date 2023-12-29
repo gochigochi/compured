@@ -6,10 +6,10 @@ export const Container = styled.button`
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    padding: 3px 3px 14px;
     box-shadow: var(--light-shadow);
     border: 1px solid rgba(25, 141, 179, 0.1);
     background-color: #fff;
+    overflow: hidden;
 `
 
 export const Top = styled.div`
