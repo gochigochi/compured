@@ -1,0 +1,44 @@
+name: compured frontend
+run-name: ${{ github.actor }} Esta buildeando 🚀
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    name: Building & publishing docker container
+    runs-on: ubuntu-22.04
+    steps:
+      - run: echo "VARIABLES ${{secrets.DOCKERHUB__USER}} y ${{secrets.DOCKERHUB__PASS}}."
+      - uses: actions/checkout@v2
+      - run: docker build --platform=linux/amd64 -t compured/compured-frontend:$(npm pkg get version | sed 's/"//g') .
+      - uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB__USER }}
+          password: ${{ secrets.DOCKERHUB__PASS }}
+      - run: docker push compured/compured-frontend:$(npm pkg get version | sed 's/"//g')
+      - run: echo "🍏 Build & Publish docker image job status is ${{ job.status }}."
+  deploy:
+    needs: build
+    name: Deploy Image
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Pull code
+        uses: actions/checkout@v2
+      - name: Set env
+        run: echo "TAG=$(npm pkg get version | sed 's/"//g')" >> $GITHUB_ENV
+      - name: Pull Docker image
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.SSH__HOST }}
+          username: ${{ secrets.SSH__USER }}
+          key: ${{ secrets.SSH_PRIVATE }}
+          port: 5714
+          script: |
+            docker stop compured-frontend
+            docker container ls -a --format {{.Names}} | grep compured-frontend | xargs --no-run-if-empty docker rm -f compured-frontend
+            docker images --format '{{.Repository}}:{{.Tag}}' | grep compured/compured-frontend:${{ env.TAG }} | xargs --no-run-if-empty docker rmi -f $(docker images --format '{{.Repository}}:{{.Tag}}' | grep compured/compured-frontend:${{ env.TAG }})
+            echo '${{ secrets.DOCKERHUB__PASS }}' | docker login -u ${{ secrets.DOCKERHUB__USER }} --password-stdin
+            docker pull compured/compured-frontend:${{ env.TAG }}
+            docker run --rm -i -t -d -p 3001:3001 --name compured-frontend compured/compured-frontend:${{ env.TAG }}
+            docker ps
