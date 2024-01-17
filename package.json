@@ -10,7 +10,6 @@
   "dependencies": {
     "@mercadopago/sdk-react": "^0.0.15",
     "@react-google-maps/api": "^2.19.2",
-    "axios": "^1.6.2",
     "framer-motion": "^10.16.7",
     "mercadopago": "^2.0.5",
     "next": "14.0.3",

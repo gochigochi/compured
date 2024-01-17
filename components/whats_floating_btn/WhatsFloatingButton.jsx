@@ -14,7 +14,7 @@ const WhatsFloatingButton = () => {
         <Anchor
             href={`https://api.whatsapp.com/send?phone=${number}&amp;text=Hola.`}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener"
         >
             <Image src="https://drive.google.com/uc?export=view&id=1CKGaqyKGQ39ELT87Z5uDLVil3bplidOw" alt="" width={65} height={65} />
         </Anchor>

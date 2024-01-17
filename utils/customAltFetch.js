@@ -1,5 +1,5 @@
 
-export const customFetch = async (url, data, method) => {
+export const customFetch = async (url, data, method = "GET") => {
 
     const controller = new AbortController()
     setTimeout(() => controller.abort(), 13000);
@@ -7,7 +7,7 @@ export const customFetch = async (url, data, method) => {
     try {
 
         const response = await fetch(url, {
-            method: "GET",
+            method: method,
             signal: controller.signal,
             // body: JSON.stringify(data)
         })

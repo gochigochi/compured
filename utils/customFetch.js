@@ -1,13 +1,13 @@
 
-export const customFetch = async (url, data) => {
+export const customFetch = async (url, data, method = "POST") => {
 
     const controller = new AbortController()
-    setTimeout(() => controller.abort(), 13000);
+    setTimeout(() => controller.abort(), 7000);
 
     try {
 
         const response = await fetch(url, {
-            method: "POST",
+            method: method,
             signal: controller.signal,
             body: JSON.stringify(data)
         })

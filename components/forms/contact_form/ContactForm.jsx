@@ -36,7 +36,7 @@ const ContactForm = () => {
       return
     }
 
-    const response = await customFetch("/api/send-contact-mail", validation.data)
+    const response = await customFetch("/api/send-contact-mail", validation.data, "POST")
 
     console.log("CONTACT RESPONSE", response)
 
