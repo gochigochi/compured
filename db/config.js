@@ -4,7 +4,7 @@ export const pool = mysql({
   config: {
     host: "localhost",
     user: "root",
-    password: "",
-    database: "pruebaCompured",
+    password: "secret",
+    database: "pruebacompured",
   },
 })
