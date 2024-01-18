@@ -51,7 +51,9 @@ export const Divider = styled.div`
     margin: 35px 0;
 `
 
-export const ReturnTitle = styled.p``
+export const ReturnTitle = styled.p`
+    margin-bottom: 1rem;
+`
 
 export const ReturnNote = styled.p`
     font-size: .8rem;

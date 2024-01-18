@@ -3,7 +3,7 @@ import { useState } from "react"
 import withCategories from "@/hocs/withCategories"
 import ProductSwiper from "../swipers/product_swiper/ProductSwiper"
 import PaymentMethods from "./payment_methods/PaymentMethods"
-import ShippingCalculator from "./shipping_calculator/ShippingCalculator"
+// import ShippingCalculator from "./shipping_calculator/ShippingCalculator"
 import ProductsSwiper from "../swipers/products_swiper/ProductsSwiper"
 import { useCartContext } from "@/context/CartContext"
 import { ContainerFluid, Inner } from "../common_elements/CommonElements"
@@ -14,7 +14,7 @@ import {
     Title,
     Price,
     Description,
-    Details,
+    // Details,
     Divider,
     ReturnTitle,
     ReturnNote,
@@ -57,7 +57,10 @@ const ProductDetail = ({ product, categs, featured }) => {
                         </AddToCart>
                         <Divider />
                         <PaymentMethods />
-                        <ShippingCalculator />
+                        <Divider />
+                            <ReturnTitle>Envíos</ReturnTitle>
+                            <ReturnNote>Los envíos se coordinan una vez realizada la compra.</ReturnNote>
+                        {/* <ShippingCalculator /> */}
                         <Divider />
                         <ReturnTitle>Devoluciones</ReturnTitle>
                         <ReturnNote>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</ReturnNote>

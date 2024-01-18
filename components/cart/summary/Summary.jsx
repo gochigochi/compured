@@ -14,7 +14,7 @@ import {
 } from "./Elements"
 const DynMpCheckoutBtn = dynamic(() => import("@/components/mp_checkout_btn/MpCheckoutBtn"), { ssr: false })
 
-const TEMP_SHIPPING = 3500
+const TEMP_SHIPPING = 0
 
 const Summary = () => {
 
@@ -59,8 +59,9 @@ const Summary = () => {
         <Subtotal>${cartTotal()}</Subtotal>
       </Item>
       <Item>
-        <Name>Envío</Name>
-        <p>${TEMP_SHIPPING}</p>
+        {/* <Name>Envío</Name> */}
+        <Name>Los envíos se coordinan una vez realizada la compra.</Name>
+        {/* <p>${TEMP_SHIPPING}</p> */}
       </Item>
       <Total>
         <p>Total</p>

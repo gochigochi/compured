@@ -28,3 +28,21 @@ export const CartContainer = styled(Link)`
     place-items: center;
     margin-left: 10px;
 `
+
+export const Top = styled.div`
+    width: 100%;
+    background-color: #f8f8f8;
+`
+
+export const TopInner = styled.div`
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 2px 12px;
+    display: flex;
+    justify-content: space-between;
+
+    p, button {
+        font-size: .6rem;
+        font-color: #8f8f8f;
+    }
+`
