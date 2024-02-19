@@ -1,7 +1,14 @@
+import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import { getProductsByCategory, getAllCategoriesAndSubCategories } from "@/utils/getProductsByCategory"
-import Home from '@/components/home/Home'
 import SEO from '@/components/seo/SEO'
+import BannerCarousel from '@/components/banner_carousel/BannerCarousel'
+import Featured from '@/components/featured/Featured'
+import Categories from '@/components/home/categories/Categories'
+import Services from '@/components/home/services/Services'
+
+const Clients = dynamic(() => import('../components/home/clients/Clients'))
+const Contact = dynamic(() => import('../components/contact/Contact'))
 
 export default function HomePage({ products, categories }) {
 
@@ -14,7 +21,16 @@ export default function HomePage({ products, categories }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SEO />
-      <Home products={products} categs={categories} />
+      <div className="section-fluid">
+        <div className="section-inner flex flex-col gap-10">
+          <BannerCarousel />
+          <Featured products={products} />
+          <Categories categs={categories} />
+          <Services />
+          <Clients />
+          <Contact />
+        </div>
+      </div>
     </>
   )
 }

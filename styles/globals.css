@@ -1,3 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .section-fluid {
+    @apply relative px-8 py-4;
+  }
+
+  .section-inner {
+    @apply mx-auto;
+    max-width: 1400px;
+  }
+
+  .product-card {
+    @apply shadow-soft flex flex-col w-full overflow-hidden bg-white;
+    border-radius: 8px;
+    border: 1px solid rgba(25, 141, 179, 0.1);
+  }
+
+  .product-grid {
+    @apply mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8;
+  }
+}
+
 :root {
   --inner-max-width: 1400px;
   --border-radius: 12px;

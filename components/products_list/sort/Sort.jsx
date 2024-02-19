@@ -2,7 +2,6 @@ import { useState } from "react"
 import FlyoutMenu from "@/components/flyout_menu/FlyoutMenu"
 import FlyoutAltMenu from "@/components/flyout_alt_menu/FlyoutAltMenu"
 import { ListSvg, OrderSvg } from "@/components/svgs/Svgs"
-import { Container, List } from "./Elements"
 
 const Sort = ({ setDirection, categories }) => {
 
@@ -14,7 +13,7 @@ const Sort = ({ setDirection, categories }) => {
   }
 
   return (
-    <Container>
+    <div className="w-full flex justify-between bg-custom-bg-gray rounded-full mb-4 md:mb-7 py-3 px-6 md:py-4 md:px-11">
       <FlyoutMenu position="left">
         <ListSvg width="24" height="24" color="var(--text-black)" />
       </FlyoutMenu>
@@ -25,14 +24,14 @@ const Sort = ({ setDirection, categories }) => {
         {
           open ?
             <FlyoutAltMenu.Menu action={() => setOpen(!open)}>
-              <List>
-                <button onClick={() => handleClick("up")}>Menor precio</button>
-                <button onClick={() => handleClick("down")}>Mayor precio</button>
-              </List>
+              <div className="grid">
+                <button className="block py-6 px-3" onClick={() => handleClick("up")}>Menor precio</button>
+                <button className="block py-6 px-3" onClick={() => handleClick("down")}>Mayor precio</button>
+              </div>
             </FlyoutAltMenu.Menu> : null
         }
       </FlyoutAltMenu>
-    </Container>
+    </div>
   )
 }
 

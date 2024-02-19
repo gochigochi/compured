@@ -23,6 +23,7 @@ const ContactForm = () => {
   const formData = useRef({ name: "", email: "", message: "" })
 
   const handleSubmit = async (e) => {
+    
     e.preventDefault()
 
     setLoading(true)
@@ -37,8 +38,6 @@ const ContactForm = () => {
     }
 
     const response = await customFetch("/api/send-contact-mail", validation.data, "POST")
-
-    console.log("CONTACT RESPONSE", response)
 
     if (!response.success) {
       console.log("IN ERROR...", response.msg)
