@@ -6,11 +6,16 @@ import BannerCarousel from '@/components/banner_carousel/BannerCarousel'
 import Featured from '@/components/featured/Featured'
 import Categories from '@/components/home/categories/Categories'
 import Services from '@/components/home/services/Services'
-
+import { Categories as Categs, Products } from '@/models/models'
 const Clients = dynamic(() => import('../components/home/clients/Clients'))
 const Contact = dynamic(() => import('../components/contact/Contact'))
 
-export default function HomePage({ products, categories }) {
+type HomePageProps = {
+  products: Products
+  categories: Categs
+}
+
+export default function HomePage({ products, categories } : HomePageProps) {
 
   return (
     <>
@@ -25,7 +30,7 @@ export default function HomePage({ products, categories }) {
         <div className="section-inner flex flex-col gap-10">
           <BannerCarousel />
           <Featured products={products} />
-          <Categories categs={categories} />
+          <Categories />
           <Services />
           <Clients />
           <Contact />

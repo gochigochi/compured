@@ -5,17 +5,17 @@ import 'swiper/css/free-mode'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import ProductCard from '@/components/product_card/ProductCard'
-import { SwiperContainer } from './Elements'
 import NavButtons from "../nav_buttons/NavButtons"
+import { Products } from '@/models/models'
 
-const ProductsSwiper = ({ products }) => {
+type PropsTypes = {
+  products: Products
+}
 
-  if (!products) {
-    return <p>...........</p>
-  }
+const ProductsSwiper = ({ products } : PropsTypes) => {
 
   return (
-    <SwiperContainer>
+    <div className="relative z-0">
       <Swiper
         breakpoints={{
           330: {
@@ -30,10 +30,9 @@ const ProductsSwiper = ({ products }) => {
           },
           1024: {
             slidesPerView: 5,
-            spaceBetween: 30,
+            spaceBetween: 15,
           },
         }}
-        spaceBetween={30}
         pagination={{ clickable: false }}
         modules={[Pagination, Navigation]}
         className="mySwiper"
@@ -41,15 +40,17 @@ const ProductsSwiper = ({ products }) => {
         {
           products?.map(product => {
             return (
-              <SwiperSlide key={product.idproducto}>
-                <ProductCard product={product} style={{"height": "330px"}} />
-              </SwiperSlide>
+              <div key={product.idproducto}>
+                <SwiperSlide>
+                  <ProductCard product={product} style={{"height": "330px"}} />
+                </SwiperSlide>
+              </div>
             )
           })
         }
         <NavButtons />
       </Swiper>
-    </SwiperContainer>
+    </div>
   )
 }
 

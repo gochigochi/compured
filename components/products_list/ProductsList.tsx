@@ -25,11 +25,12 @@ const ProductsList = ({ products, categs }) => {
                     {
                         sorted?.map(product => {
                             return (
-                                <ProductCard
-                                    key={product.idproducto}
-                                    product={product}
-                                    style={{ "height": "330px" }}
-                                />
+                                <div key={product.idproducto}>
+                                    <ProductCard
+                                        product={product}
+                                        style={{ "height": "330px" }}
+                                    />
+                                </div>
                             )
                         })
                     }

@@ -1,13 +1,14 @@
+import { Products } from '@/models/models'
 import { useEffect, useState } from 'react'
 
 const useSort = (items: [], comparative: string | number) => {
 
-    const [sorted, setSorted] = useState(items)
+    const [sorted, setSorted] = useState<Products>(items)
     const [direction, setDirection] = useState<"up" | "down">(null)
 
     useEffect(() => {
 
-        const sortedCopy: [] = [...sorted]
+        const sortedCopy: Products = [...sorted]
 
         switch (direction) {
             case "up":

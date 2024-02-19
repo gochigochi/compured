@@ -1,7 +1,7 @@
 
 const ComponentError = () => {
   return (
-    <div>Ocurrió un error en esta sección</div>
+    <div className="section-inner w-full grad items-center text-center">Ocurrió un error en esta sección</div>
   )
 }
 
