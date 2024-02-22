@@ -13,7 +13,6 @@ type PropsTypes = {
 }
 
 const ProductsSwiper = ({ products } : PropsTypes) => {
-
   return (
     <div className="relative z-0">
       <Swiper
@@ -40,7 +39,7 @@ const ProductsSwiper = ({ products } : PropsTypes) => {
         {
           products?.map(product => {
             return (
-              <div key={product.idproducto}>
+              <div key={product.idproducto + product.nombre}>
                 <SwiperSlide>
                   <ProductCard product={product} style={{"height": "330px"}} />
                 </SwiperSlide>

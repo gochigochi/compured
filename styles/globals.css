@@ -43,6 +43,19 @@
   .swiper-nav-btn {
     @apply absolute top-1/2 -translate-y-3/4 grid items-center w-[55px] h-[55px] cursor-pointer z-[200] rounded-full bg-custom-gray opacity-50 transition hover:opacity-100;
   }
+
+  .service-card {
+    @apply relative h-[400px] w-full sm:w-[48%] md:w-[32%] sm:h-[500px] mb-12 rounded-xl overflow-hidden p-[25px] flex flex-col justify-end gap-[25px]; 
+  }
+
+  .service-card > * {
+    @apply text-white;
+  }
+
+  .input-border {
+    border: 1px solid;
+    @apply border-zinc-200;
+  }
 }
 
 @layer utilities {
@@ -100,10 +113,6 @@ ul {
 a {
   color: inherit;
   text-decoration: none;
-}
-
-input, button {
-  all: unset;
 }
 
 button {

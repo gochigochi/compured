@@ -3,16 +3,8 @@ import dynamic from "next/dynamic"
 import PrimaryButton from "@/components/buttons/primary/PrimaryButton"
 import { ContactMessageSchema } from "@/utils/zodSchemas"
 import { customFetch } from "@/utils/customFetch"
-import {
-  Form,
-  InputContainer,
-  Input,
-  TextArea,
-  GeneralError,
-  ButtonArea,
-} from "../Elements"
-const DynButtonLoader = dynamic(() => import("@/components/loaders/ButtonLoader/ButtonLoader"))
-const DynToast = dynamic(() => import("@/components/toast/Toast"))
+const ButtonLoader = dynamic(() => import("@/components/loaders/ButtonLoader/ButtonLoader"))
+const Toast = dynamic(() => import("@/components/toast/Toast"))
 
 const ContactForm = () => {
 
@@ -22,15 +14,17 @@ const ContactForm = () => {
   const [inputError, setInputError] = useState(null)
   const formData = useRef({ name: "", email: "", message: "" })
 
-  const handleSubmit = async (e) => {
-    
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+
     e.preventDefault()
+
+    const target = e.target as HTMLFormElement
 
     setLoading(true)
 
     const validation = ContactMessageSchema.safeParse(formData.current)
 
-    if (!validation.success) {
+    if (validation.success === false) {
       setInputError(validation.error.issues[0].message)
       setTimeout(() => setInputError(null), 3000)
       setLoading(false)
@@ -40,7 +34,7 @@ const ContactForm = () => {
     const response = await customFetch("/api/send-contact-mail", validation.data, "POST")
 
     if (!response.success) {
-      console.log("IN ERROR...", response.msg)
+      console.log("Error sending message", response.msg)
       setError(true)
       setLoading(false)
       return
@@ -49,14 +43,15 @@ const ContactForm = () => {
     setSent(true)
     setLoading(false)
     formData.current = { name: "", email: "", message: "" }
-    e.target.reset()
+    target.reset()
   }
 
   return (
     <>
-      <Form noValidate onSubmit={handleSubmit}>
-        <InputContainer>
-          <Input
+      <form noValidate onSubmit={handleSubmit} className="relative w-full flex flex-col gap-6">
+        <div className="relative grid">
+          <input
+            className="rounded-lg p-[15px_0_15px_15px] input-border"
             id="name"
             name="name"
             type="text"
@@ -65,9 +60,10 @@ const ContactForm = () => {
             aria-required="true"
             onChange={(e) => formData.current.name = e.target.value}
           />
-        </InputContainer>
-        <InputContainer>
-          <Input
+        </div>
+        <div className="relative grid">
+          <input
+            className="rounded-lg p-[15px_0_15px_15px] input-border"
             id="email"
             name="email"
             type="email"
@@ -76,9 +72,10 @@ const ContactForm = () => {
             aria-required="true"
             onChange={(e) => formData.current.email = e.target.value}
           />
-        </InputContainer>
-        <InputContainer>
-          <TextArea
+        </div>
+        <div className="relative grid">
+          <textarea
+            className="input-border rounded-lg p-[15px]"
             id="message"
             name="message"
             placeholder="Dejanos un mensaje"
@@ -87,22 +84,22 @@ const ContactForm = () => {
             rows={5}
             onChange={(e) => formData.current.message = e.target.value}
           />
-        </InputContainer>
-        <ButtonArea>
-          <GeneralError>{inputError ? inputError : null}</GeneralError>
+        </div>
+        <div className="flex items-center justify-between">
+          <p className="text-red-600">{inputError ? inputError : null}</p>
           <PrimaryButton
             dis={loading}
             disabled={loading}
             aria-disabled={loading}
             type="submit"
           >
-            { loading ?  <DynButtonLoader /> : "Enviar" }
+            {loading ? <ButtonLoader /> : "Enviar"}
           </PrimaryButton>
-        </ButtonArea>
-      </Form>
+        </div>
+      </form>
       {
         error ?
-          <DynToast
+          <Toast
             success={false}
             msg="Ocurrió un error. Vuelva a intentarlo."
             setShowToast={setError}
@@ -111,7 +108,7 @@ const ContactForm = () => {
       }
       {
         sent ?
-          <DynToast
+          <Toast
             success={true}
             msg="El mensaje fue enviado."
             setShowToast={setSent}

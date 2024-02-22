@@ -7,15 +7,27 @@ import Featured from '@/components/featured/Featured'
 import Categories from '@/components/home/categories/Categories'
 import Services from '@/components/home/services/Services'
 import { Categories as Categs, Products } from '@/models/models'
+import { GetStaticProps, InferGetStaticPropsType } from 'next'
 const Clients = dynamic(() => import('../components/home/clients/Clients'))
 const Contact = dynamic(() => import('../components/contact/Contact'))
 
-type HomePageProps = {
-  products: Products
-  categories: Categs
-}
+export const getStaticProps = (async () => {
 
-export default function HomePage({ products, categories } : HomePageProps) {
+  // cat. 129 DESTACADOS
+  // cat. 0 TODOS LOS PRODUCTOS
+  const products = await getProductsByCategory(129)
+
+  return {
+    props: {
+      products: products[0],
+    },
+    revalidate: 10,
+  }
+}) satisfies GetStaticProps<{ products: Products }>
+
+export default function HomePage({
+   products
+  } : InferGetStaticPropsType<typeof getStaticProps>) {
 
   return (
     <>
@@ -27,7 +39,7 @@ export default function HomePage({ products, categories } : HomePageProps) {
       </Head>
       <SEO />
       <div className="section-fluid">
-        <div className="section-inner flex flex-col gap-10">
+        <div className="section-inner flex flex-col gap-20">
           <BannerCarousel />
           <Featured products={products} />
           <Categories />
@@ -38,20 +50,4 @@ export default function HomePage({ products, categories } : HomePageProps) {
       </div>
     </>
   )
-}
-
-export async function getStaticProps() {
-
-  // cat. 129 DESTACADOS
-  // cat. 0 TODOS LOS PRODUCTOS
-  const products = await getProductsByCategory(129)
-  const categories = await getAllCategoriesAndSubCategories()
-
-  return {
-    props: {
-      products: products[0],
-      categories: categories,
-    },
-    revalidate: 10,
-  }
 }

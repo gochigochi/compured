@@ -3,13 +3,6 @@ import { useRouter } from "next/router"
 import dynamic from "next/dynamic"
 import PrimaryButton from "@/components/buttons/primary/PrimaryButton"
 import { AdminLoginSchema } from "@/utils/zodSchemas"
-import {
-    Form,
-    InputContainer,
-    Input,
-    GeneralError,
-    ButtonArea,
-} from "../Elements"
 const DynButtonLoader = dynamic(() => import("@/components/loaders/ButtonLoader/ButtonLoader"))
 
 const LoginForm = () => {
@@ -53,9 +46,10 @@ const LoginForm = () => {
 
     return (
         <>
-            <Form noValidate onSubmit={handleSubmit}>
-                <InputContainer>
-                    <Input
+            <form noValidate onSubmit={handleSubmit} className="relative w-full flex flex-col gap-6">
+                <div className="relative grid">
+                    <input
+                        className="rounded-lg p-[15px_0_15px_15px] input-border"
                         id="user"
                         name="user"
                         type="user"
@@ -64,9 +58,10 @@ const LoginForm = () => {
                         aria-required="true"
                         onChange={(e) => formData.current.user = e.target.value}
                     />
-                </InputContainer>
-                <InputContainer>
-                    <Input
+                </div>
+                <div className="relative grid">
+                    <input
+                        className="rounded-lg p-[15px_0_15px_15px] input-border"
                         id="password"
                         name="password"
                         type="password"
@@ -75,9 +70,9 @@ const LoginForm = () => {
                         aria-required="true"
                         onChange={(e) => formData.current.password = e.target.value}
                     />
-                </InputContainer>
-                <ButtonArea>
-                    <GeneralError>{inputError ? inputError : null}</GeneralError>
+                </div>
+                <div className="flex items-center justify-between">
+                    <p className="text-red-600">{inputError ? inputError : null}</p>
                     <PrimaryButton
                         dis={loading}
                         disabled={loading}
@@ -86,8 +81,8 @@ const LoginForm = () => {
                     >
                         {loading ? <DynButtonLoader /> : "Ingresar"}
                     </PrimaryButton>
-                </ButtonArea>
-            </Form>
+                </div>
+            </form>
             {
                 error ?
                     <DynToast

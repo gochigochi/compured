@@ -25,6 +25,7 @@ const ProductCard = ({ product, ...props } : PropsTypes & React.HTMLAttributes<H
           alt={product.nombre}
           fill
           className="object-contain"
+          sizes="(max-width: 550px) 50vw, 25vw"
         />
       </div>
       <div className="relative mt-[15px] px-[15px] flex flex-col gap-2 grow">

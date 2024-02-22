@@ -19,7 +19,7 @@ const Button = styled.button`
 
 const PrimaryButton = ( { children, onClick = () => {}, disabled = false, ...props}) => {
     return(
-        <Button onClick={onClick} disabled={disabled} dis={disabled} {...props}>{children}</Button>
+        <Button className="text-center" onClick={onClick} disabled={disabled} dis={disabled} {...props}>{children}</Button>
     )
 }
 

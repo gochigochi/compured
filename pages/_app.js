@@ -4,7 +4,7 @@ import Layout from "@/components/layout/Layout"
 import CategoriesContextProvider from "@/context/CategoriesContext"
 import CartContextProvider from "@/context/CartContext"
 import ErrorBoundary from "@/components/errors/ErrorBoundary"
-import { GeneralError } from "@/components/forms/Elements"
+import GeneralError from "@/components/errors/general_error/GeneralError"
 
 const publicSans = Public_Sans({
   weight: ["300", "400", "500", "600", "700"],

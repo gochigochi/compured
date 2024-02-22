@@ -1,13 +1,15 @@
-import { useEffect } from "react"
-import { CartSvg, CheckSvg, FailedSvg } from "../svgs/Svgs"
+import { useEffect, Dispatch, SetStateAction } from "react"
+import { CheckSvg, FailedSvg } from "../svgs/Svgs"
 import { Container, Box, ProgressBar, ProgressBarContainer } from "./Elements"
+import type { ToastType } from "@/models/toast"
+
 
 const Toast = ({
-    msg = "Esta es una notificación",
-    success = true,
+    msg = "La acción se ha completado",
+    success,
     time = 3000,
-    setShowToast = () => {}
-}) => {
+    setShowToast
+} : ToastType) => {
 
     useEffect(() => {
 
@@ -21,7 +23,7 @@ const Toast = ({
         <Container>
             <Box>
                 <ProgressBarContainer>
-                    <ProgressBar t={time} />
+                    {/* <ProgressBar t={time} /> */}
                 </ProgressBarContainer>
                 <i>{success ? <CheckSvg /> : <FailedSvg />}</i>
                 <span>{msg}</span>
