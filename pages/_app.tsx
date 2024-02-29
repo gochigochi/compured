@@ -1,4 +1,6 @@
 import { Public_Sans } from "next/font/google"
+import { store } from "../store/store"
+import { Provider } from "react-redux"
 import '@/styles/globals.css'
 import Layout from "@/components/layout/Layout"
 import CategoriesContextProvider from "@/context/CategoriesContext"
@@ -15,11 +17,13 @@ export default function App({ Component, pageProps }) {
   return (
     <CartContextProvider>
       <CategoriesContextProvider>
-        <Layout className={publicSans.className}>
-          <ErrorBoundary fallback={<GeneralError />}>
-            <Component {...pageProps} />
-          </ErrorBoundary>
-        </Layout>
+        <Provider store={store}>
+          <Layout className={publicSans.className}>
+            <ErrorBoundary fallback={<GeneralError />}>
+              <Component {...pageProps} />
+            </ErrorBoundary>
+          </Layout>
+        </Provider>
       </CategoriesContextProvider>
     </CartContextProvider>
   )

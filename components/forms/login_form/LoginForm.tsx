@@ -3,24 +3,23 @@ import { useRouter } from "next/router"
 import dynamic from "next/dynamic"
 import PrimaryButton from "@/components/buttons/primary/PrimaryButton"
 import { AdminLoginSchema } from "@/utils/zodSchemas"
-const DynButtonLoader = dynamic(() => import("@/components/loaders/ButtonLoader/ButtonLoader"))
+const ButtonLoader = dynamic(() => import("@/components/loaders/ButtonLoader/ButtonLoader"))
 
 const LoginForm = () => {
 
     const router = useRouter()
     const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(false)
     const [inputError, setInputError] = useState(null)
     const formData = useRef({ user: "", password: "" })
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         setLoading(true)
 
         const validation = AdminLoginSchema.safeParse(formData.current)
 
-        if (!validation.success) {
+        if (validation.success === false) {
             setInputError(validation.error.issues[0].message)
             setTimeout(() => setInputError(null), 3000)
             setLoading(false)
@@ -79,19 +78,10 @@ const LoginForm = () => {
                         aria-disabled={loading}
                         type="submit"
                     >
-                        {loading ? <DynButtonLoader /> : "Ingresar"}
+                        {loading ? <ButtonLoader /> : "Ingresar"}
                     </PrimaryButton>
                 </div>
             </form>
-            {
-                error ?
-                    <DynToast
-                        success={false}
-                        msg="Ocurrió un error. Vuelva a intentarlo."
-                        setShowToast={setError}
-                    /> :
-                    null
-            }
         </>
     )
 }

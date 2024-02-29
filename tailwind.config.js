@@ -15,6 +15,15 @@ module.exports = {
       },
       boxShadow: {
         'soft': '0px 2px 10px 0px rgba(146, 157, 161, 0.2)', 
+      },
+      keyframes: {
+        progress: {
+          '0%': { transform: 'scaleX(0)' },
+          '100%': { transform: 'scaleX(1)'},
+        }
+      },
+      animation: {
+        'progress-bar': 'progress 3s linear',
       }
     },
   },
