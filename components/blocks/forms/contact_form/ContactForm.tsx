@@ -1,10 +1,10 @@
 import { useState, useRef } from "react"
 import dynamic from "next/dynamic"
-import PrimaryButton from "@/components/buttons/primary/PrimaryButton"
+import PrimaryButton from "@/components/ui/buttons/primary/PrimaryButton"
 import { ContactMessageSchema } from "@/utils/zodSchemas"
 import { customFetch } from "@/utils/customFetch"
-const ButtonLoader = dynamic(() => import("@/components/loaders/ButtonLoader/ButtonLoader"))
-const Toast = dynamic(() => import("@/components/toast/Toast"))
+const ButtonLoader = dynamic(() => import("@/components/ui/loaders/ButtonLoader/ButtonLoader"))
+const Toast = dynamic(() => import("@/components/ui/toast/Toast"))
 
 const ContactForm = () => {
 

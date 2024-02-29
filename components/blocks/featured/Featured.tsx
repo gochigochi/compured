@@ -1,7 +1,8 @@
-import ErrorBoundary from "../errors/ErrorBoundary"
-import ProductsSwiper from "../swipers/products_swiper/ProductsSwiper"
+import dynamic from "next/dynamic"
+import ProductsSwiper from "@/components/blocks/swipers/products_swiper/ProductsSwiper"
 import { Products } from "@/models/models"
-import GeneralError from "../errors/general_error/GeneralError"
+import ErrorBoundary from "@/components/errors/ErrorBoundary"
+const GeneralError = dynamic(() => import("../../../components/errors/general_error/GeneralError"))
 
 type FeaturedProp = {
     products: Products

@@ -4,7 +4,7 @@ import 'swiper/css'
 import 'swiper/css/free-mode'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
-import ProductCard from '@/components/product_card/ProductCard'
+import ProductCard from "@/components/blocks/product_card/ProductCard"
 import NavButtons from "../nav_buttons/NavButtons"
 import { Products } from '@/models/models'
 

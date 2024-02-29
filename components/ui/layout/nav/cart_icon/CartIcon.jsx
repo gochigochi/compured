@@ -1,6 +1,6 @@
 import { useCartContext } from '@/context/CartContext'
 import { IconContainer, Badge } from './Elements'
-import { CartSvg } from '@/components/svgs/Svgs'
+// import { CartSvg } from '@/components/svgs/Svgs'
 
 const CartIcon = () => {
 
@@ -8,7 +8,7 @@ const CartIcon = () => {
 
     return (
         <IconContainer>
-            <CartSvg />
+            {/* <CartSvg /> */}
             <Badge>{cartTotalItems()}</Badge>
         </IconContainer>
     )
