@@ -16,18 +16,6 @@ const publicSans = Public_Sans({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <CartContextProvider>
-      <CategoriesContextProvider>
-        <Provider store={store}>
-          <div className={publicSans.className}>
-            <Layout>
-              <ErrorBoundary fallback={<GeneralError />}>
-                <Component {...pageProps} />
-              </ErrorBoundary>
-            </Layout>
-          </div>
-        </Provider>
-      </CategoriesContextProvider>
-    </CartContextProvider>
+    <Component {...pageProps} />
   )
 }
