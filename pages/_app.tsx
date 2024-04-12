@@ -1,12 +1,5 @@
 import { Public_Sans } from "next/font/google"
-import { store } from "../store/store"
-import { Provider } from "react-redux"
 import '@/styles/globals.css'
-import Layout from "@/components/ui/layout/Layout"
-import CategoriesContextProvider from "@/context/CategoriesContext"
-import CartContextProvider from "@/context/CartContext"
-import ErrorBoundary from "@/components/errors/ErrorBoundary"
-import GeneralError from "@/components/errors/general_error/GeneralError"
 import { AppProps } from "next/app"
 
 const publicSans = Public_Sans({
