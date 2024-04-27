@@ -137,3 +137,18 @@ textarea {
   display: flex;
   flex-direction: column;
 }
+
+.print-area {
+  display: none;
+}
+
+@media print {
+
+  body * {
+    display: none;
+  }
+
+  .print-area {
+    display: block;
+  }
+}
