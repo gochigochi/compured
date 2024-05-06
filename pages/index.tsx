@@ -20,7 +20,7 @@ export default function HomePage() {
           <h1>Categories</h1>
         </div>
         <div className="flex-1 px-2 pt-20 overflow-auto">
-          <div className="grid grid-cols-12 gap-2 pb-28">
+          <div className="grid grid-cols-12 gap-2 pb-36">
             <div className="col-span-6 bg-zinc-300 rounded-md aspect-square"></div>
             <div className="col-span-6 bg-zinc-300 rounded-md aspect-square"></div>
             <div className="col-span-6 bg-zinc-300 rounded-md aspect-square"></div>
