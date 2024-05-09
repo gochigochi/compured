@@ -3,74 +3,13 @@
 @tailwind utilities;
 
 @layer components {
-  .section-fluid {
-    @apply relative px-2 md:px-8 py-4;
-  }
-
-  .section-inner {
-    @apply mx-auto;
-    max-width: 1400px;
-  }
-
-  .section-title {
-    @apply text-2xl md:text-[2rem];
-  }
-
-  .section-subtitle { 
-    @apply text-sm md:text-base;
-  }
-
-  .product-card {
-    @apply shadow-soft flex flex-col w-full overflow-hidden bg-white;
-    border-radius: 8px;
-    border: 1px solid rgba(25, 141, 179, 0.1);
-  }
-
-  .product-grid {
-    @apply mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8;
-  }
-
-  .category-card {
-    @apply rounded-lg shadow-soft grid gap-3;
-    padding: 10px;
-    grid-template-columns: 75px 1fr;
-  }
-
-  section .mySwiper {
-    padding: 1rem 0 3rem 0;
-  }
-
-  .swiper-nav-btn {
-    @apply absolute top-1/2 -translate-y-3/4 grid items-center w-[55px] h-[55px] cursor-pointer z-[200] rounded-full bg-custom-gray opacity-50 transition hover:opacity-100;
-  }
-
-  .service-card {
-    @apply relative h-[400px] w-full sm:w-[48%] md:w-[32%] sm:h-[500px] mb-12 rounded-xl overflow-hidden p-[25px] flex flex-col justify-end gap-[25px]; 
-  }
-
-  .service-card > * {
-    @apply text-white;
-  }
-
-  .input-border {
-    border: 1px solid;
-    @apply border-zinc-200;
+  .primary-button {
+    @apply p-2 bg-blue-500 rounded-md text-white flex items-center gap-1 justify-center;
   }
 }
 
 @layer utilities {
   
-  .gradient {
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 80%);
-  }
-
-  .basic-gradient {
-    background: linear-gradient(90deg, rgba(25,45,51,1) 0%, rgba(25,141,179,1) 100%);
-  }
-
-  .floating-box-shadow {
-    box-shadow: 0px 5px 11px 0px rgba(25, 141, 179, 0.1);
-  }
 }
 
 :root {
@@ -147,7 +86,7 @@ textarea {
 
 @media print {
 
-  body * {
+  .dont-print {
     display: none;
   }
 

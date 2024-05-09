@@ -1,10 +1,21 @@
 import Head from 'next/head'
+import { useRef } from 'react'
+import * as htmlToImage from 'html-to-image'
 
 export default function HomePage() {
 
+  const androidTicketRef = useRef()
 
-  const handleClick = () => {
+  const printWindows = () => {
     window.print()
+  }
+
+  const printAndroid = async () => {
+    const dataUrl = await htmlToImage.toPng(androidTicketRef.current)
+    const S = "#Intent;scheme=rawbt;"
+    const P = "package=ru.a402d.rawbtprinter;end;"
+    window.location.href = "intent:" + dataUrl + S + P
+    // console.log(dataUrl)
   }
 
   return (
@@ -15,32 +26,16 @@ export default function HomePage() {
         <meta name="viewport" content="width=device-width, initial-scale=1" key="Compured" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex flex-col h-screen bg-zinc-100">
-        <div className="bg-white h-16 grid place-items-center fixed top-0 w-full">
-          <h1>Categories</h1>
-        </div>
-        <div className="flex-1 px-2 pt-20 overflow-auto">
-          <div className="grid grid-cols-12 gap-2 pb-44">
-            <div className="col-span-6 bg-zinc-300 rounded-md aspect-square"></div>
-            <div className="col-span-6 bg-zinc-300 rounded-md aspect-square"></div>
-            <div className="col-span-6 bg-zinc-300 rounded-md aspect-square"></div>
-            <div className="col-span-6 bg-zinc-300 rounded-md aspect-square"></div>
-            <div className="col-span-6 bg-zinc-300 rounded-md aspect-square"></div>
-            <div className="col-span-6 bg-zinc-300 rounded-md aspect-square"></div>
-            <div className="col-span-6 bg-zinc-300 rounded-md aspect-square"></div>
-            <div className="col-span-6 bg-zinc-300 rounded-md aspect-square"></div>
-            <div className="col-span-6 bg-zinc-300 rounded-md aspect-square"></div>
-            <div className="col-span-6 bg-zinc-300 rounded-md aspect-square"></div>
-            <div className="col-span-6 bg-zinc-300 rounded-md aspect-square"></div>
-            <div className="col-span-6 bg-zinc-300 rounded-md aspect-square"></div>
-            <div className="col-span-6 bg-zinc-300 rounded-md aspect-square"></div>
-            <div className="col-span-6 bg-zinc-300 rounded-md aspect-square"></div>
-            <div className="col-span-6 bg-zinc-300 rounded-md aspect-square"></div>
-            <div className="col-span-6 bg-zinc-300 rounded-md aspect-square"></div>
-          </div>
-        </div>
-        <div className="fixed bottom-0 z-50 bg-white h-20 w-full">
-          <h2>Cart</h2>
+      <div className="dont-print flex gap-2 justify-center mt-8">
+        <button onClick={printAndroid} className="primary-button">Print Android</button>
+        <button onClick={printWindows} className="primary-button">Print Windows</button>
+      </div>
+      <div className="print-area border border-zinc-200 w-full max-w-[400px] absolute top-1 left-1 p-2 pb-28">
+        <p className="print-area">Print Test Window method</p>
+      </div>
+      <div className="absolute bg-white w-[600px] p-4 -top-[800px] -left-[800px]">
+        <div className="w-[350px]" ref={androidTicketRef}>
+          <p>Print Test Android RawBT method</p>
         </div>
       </div>
     </>
