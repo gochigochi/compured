@@ -1,9 +1,14 @@
 import Head from 'next/head'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import * as htmlToImage from 'html-to-image'
+
+const isAndroid = () => {
+  return /Android/i.test(navigator.userAgent)
+}
 
 export default function HomePage() {
 
+  const [isAndroidDevice, setIsAndroidDevice] = useState(false)
   const androidTicketRef = useRef()
 
   const printWindows = () => {
@@ -18,6 +23,12 @@ export default function HomePage() {
     // console.log(dataUrl)
   }
 
+  useEffect(() => {
+    setIsAndroidDevice(isAndroid())
+  }, [])
+
+  console.log(isAndroidDevice)
+
   return (
     <>
       <Head>
@@ -26,6 +37,7 @@ export default function HomePage() {
         <meta name="viewport" content="width=device-width, initial-scale=1" key="Compured" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div>Is Android: {isAndroidDevice ? "true" : "false"}</div>
       <div className="dont-print flex gap-2 justify-center mt-8">
         <button onClick={printAndroid} className="primary-button">Print Android</button>
         <button onClick={printWindows} className="primary-button">Print Windows</button>
