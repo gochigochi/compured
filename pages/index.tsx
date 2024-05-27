@@ -12,6 +12,7 @@ export default function HomePage() {
   // const [isAndroidDevice, setIsAndroidDevice] = useState(false)
   const { isAndroid } = useIsAndroid()
   const androidTicketRef = useRef()
+  const windowRef = useRef(window)
 
   const printWindows = () => {
     window.print()
@@ -23,6 +24,31 @@ export default function HomePage() {
     const P = "package=ru.a402d.rawbtprinter;end;"
     window.location.href = "intent:" + dataUrl + S + P
     // console.log(dataUrl)
+  }
+
+  const printNewTab = () => {
+
+    const html = `
+     <html>
+            <head>
+                <title>Print Receipt</title>
+            </head>
+            <body>
+                <p>Some html here</p>
+            </body>
+        </html>
+    `
+
+    const printWindow = windowRef.current.open("")
+
+    if (printWindow) {
+      printWindow.document.write(html)
+      printWindow.document.close()
+      printWindow.print()
+      printWindow.close()
+    } else {
+      console.error("Ocurrió un error al intentar imprimir laventana")
+    }
   }
 
   // useEffect(() => {
@@ -43,6 +69,7 @@ export default function HomePage() {
       <div className="dont-print flex gap-2 justify-center mt-8">
         <button onClick={printAndroid} className="primary-button">Print Android</button>
         <button onClick={printWindows} className="primary-button">Print Windows</button>
+        <button onClick={printNewTab} className="primary-button">Print New Tab</button>
       </div>
       <div className="print-area border border-zinc-200 w-full max-w-[400px] absolute top-1 left-1 p-2 pb-28">
         <p className="print-area">Print Test Window method</p>
