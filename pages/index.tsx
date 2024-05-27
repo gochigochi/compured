@@ -12,7 +12,7 @@ export default function HomePage() {
   // const [isAndroidDevice, setIsAndroidDevice] = useState(false)
   const { isAndroid } = useIsAndroid()
   const androidTicketRef = useRef()
-  const windowRef = useRef(window)
+  const windowRef = useRef(null)
 
   const printWindows = () => {
     window.print()
@@ -29,7 +29,7 @@ export default function HomePage() {
   const printNewTab = () => {
 
     const html = `
-     <html>
+      <html>
             <head>
                 <title>Print Receipt</title>
             </head>
@@ -55,7 +55,9 @@ export default function HomePage() {
   //   setIsAndroidDevice(isAndroid())
   // }, [])
 
-  console.log(isAndroid)
+  useEffect(() => {
+    windowRef.current = window;
+  }, [])
 
   return (
     <>
