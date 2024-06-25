@@ -43,6 +43,14 @@ export default function HomePage() {
     // console.log(dataUrl)
   }
 
+  const printJpgXl = async () => {
+    const dataUrl = await htmlToImage.toJpeg(androidTicketRefAlt.current)
+    const S = "#Intent;scheme=rawbt;"
+    const P = "package=ru.a402d.rawbtprinter;end;"
+    window.location.href = "intent:" + dataUrl + S + P
+    // console.log(dataUrl)
+  }
+
 
 
   const printNewTab = () => {
@@ -94,6 +102,7 @@ export default function HomePage() {
 
         <button onClick={printPng} className="primary-button">Print PNG</button>
         <button onClick={printJpg} className="primary-button">Print JPG</button>
+        <button onClick={printJpgXl} className="primary-button">Print JPG XL</button>
       </div>
       <div className="print-area border border-zinc-200 w-full max-w-[400px] absolute top-1 left-1 p-2 pb-28">
         <p className="print-area">Print Test Window method</p>
