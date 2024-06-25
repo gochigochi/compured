@@ -12,6 +12,7 @@ export default function HomePage() {
   // const [isAndroidDevice, setIsAndroidDevice] = useState(false)
   const { isAndroid } = useIsAndroid()
   const androidTicketRef = useRef()
+  const androidTicketRefAlt = useRef()
   const windowRef = useRef(null)
 
   const printWindows = () => {
@@ -25,6 +26,24 @@ export default function HomePage() {
     window.location.href = "intent:" + dataUrl + S + P
     // console.log(dataUrl)
   }
+
+  const printPng = async () => {
+    const dataUrl = await htmlToImage.toPng(androidTicketRef.current)
+    const S = "#Intent;scheme=rawbt;"
+    const P = "package=ru.a402d.rawbtprinter;end;"
+    window.location.href = "intent:" + dataUrl + S + P
+    // console.log(dataUrl)
+  }
+
+  const printJpg = async () => {
+    const dataUrl = await htmlToImage.toJpeg(androidTicketRef.current)
+    const S = "#Intent;scheme=rawbt;"
+    const P = "package=ru.a402d.rawbtprinter;end;"
+    window.location.href = "intent:" + dataUrl + S + P
+    // console.log(dataUrl)
+  }
+
+
 
   const printNewTab = () => {
 
@@ -69,16 +88,24 @@ export default function HomePage() {
       </Head>
       <div>Is Android: {isAndroid ? "true" : "false"}</div>
       <div className="dont-print flex gap-2 justify-center mt-8">
-        <button onClick={printAndroid} className="primary-button">Print Android</button>
+        {/* <button onClick={printAndroid} className="primary-button">Print Android</button>
         <button onClick={printWindows} className="primary-button">Print Windows</button>
-        <button onClick={printNewTab} className="primary-button">Print New Tab</button>
+        <button onClick={printNewTab} className="primary-button">Print New Tab</button> */}
+
+        <button onClick={printPng} className="primary-button">Print PNG</button>
+        <button onClick={printJpg} className="primary-button">Print JPG</button>
       </div>
       <div className="print-area border border-zinc-200 w-full max-w-[400px] absolute top-1 left-1 p-2 pb-28">
         <p className="print-area">Print Test Window method</p>
       </div>
       <div className="absolute bg-white w-[600px] p-4 -top-[800px] -left-[800px]">
         <div className="w-[350px]" ref={androidTicketRef}>
-          <p>Print Test Android RawBT method</p>
+          <p>Print Test Android RawBT method text base</p>
+        </div>
+      </div>
+      <div className="absolute bg-white w-[600px] p-4 -top-[800px] -left-[800px]">
+        <div className="w-[350px]" ref={androidTicketRefAlt}>
+          <p className="text-3xl">Print Test Android RawBT method 3xl</p>
         </div>
       </div>
     </>
