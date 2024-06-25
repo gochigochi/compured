@@ -29,7 +29,7 @@ export default function HomePage() {
 
   const printPng = async () => {
     const dataUrl = await htmlToImage.toPng(androidTicketRef.current)
-    const S = "#Intent;scheme=rawbt;"
+    const S = "#Intent;"
     const P = "package=ru.a402d.rawbtprinter;end;"
     window.location.href = "intent:" + dataUrl + S + P
     // console.log(dataUrl)
