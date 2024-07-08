@@ -29,7 +29,7 @@ export default function HomePage() {
 
   const printPng = async () => {
     const dataUrl = await htmlToImage.toPng(androidTicketRef.current)
-    const S = "#Intent;"
+    const S = "#Intent;scheme=rawbt;"
     const P = "package=ru.a402d.rawbtprinter;end;"
     window.location.href = "intent:" + dataUrl + S + P
     // console.log(dataUrl)
@@ -94,11 +94,19 @@ export default function HomePage() {
         <meta name="viewport" content="width=device-width, initial-scale=1" key="Compured" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>Is Android: {isAndroid ? "true" : "false"}</div>
+      <a
+            href={`https://api.whatsapp.com/send?phone=${41779797672}&amp;text=Hola.`}
+            target="_blank"
+            rel="noopener"
+        >
+            <img src="https://drive.google.com/uc?export=view&id=1CKGaqyKGQ39ELT87Z5uDLVil3bplidOw" alt="" width={45} height={45} />
+        </a>
+
+      {/* <div>Is Android: {isAndroid ? "true" : "false"}</div>
       <div className="dont-print flex gap-2 justify-center mt-8">
-        {/* <button onClick={printAndroid} className="primary-button">Print Android</button>
+        <button onClick={printAndroid} className="primary-button">Print Android</button>
         <button onClick={printWindows} className="primary-button">Print Windows</button>
-        <button onClick={printNewTab} className="primary-button">Print New Tab</button> */}
+        <button onClick={printNewTab} className="primary-button">Print New Tab</button>
 
         <button onClick={printPng} className="primary-button">Print PNG</button>
         <button onClick={printJpg} className="primary-button">Print JPG</button>
@@ -116,7 +124,7 @@ export default function HomePage() {
         <div className="w-[350px]" ref={androidTicketRefAlt}>
           <p className="text-3xl">Print Test Android RawBT method 3xl</p>
         </div>
-      </div>
+      </div> */}
     </>
   )
 }
